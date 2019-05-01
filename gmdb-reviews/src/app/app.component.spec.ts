@@ -1,10 +1,13 @@
-    import { TestBed, async } from '@angular/core/testing';
+    import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -20,22 +23,48 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'Movies'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Movies');
   });
 
   it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Movies');
+  });
+
+  it('should have a search form', () => {
+    const compiled = fixture.nativeElement;
+    // expect(compiled.querySelector('form')).toBeDefined();
+    expect(compiled.querySelector('form')).toBeTruthy();
+  });
+
+  it('should require query to submit form', () => {
+    const searchForm = component.searchForm.controls;
+    searchForm.query.setValue('Avengers');
+    expect(searchForm.query.value).toEqual('Avengers');
+  });
+
+  it('should validate form to be false', () => {
+    const searchForm = component.searchForm;
+    expect(searchForm.valid).toBeFalsy();
+  });
+
+  it('should validate form to be true', () => {
+    const searchForm = component.searchForm;
+    searchForm.controls.query.setValue('Avengers')
+    expect(searchForm.valid).toBeTruthy();
   });
 });
