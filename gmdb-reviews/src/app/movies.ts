@@ -16,6 +16,7 @@ export class Movies {
     Poster: string;
     Ratings: object[];
     Metascore: number;
+    imdbID:string;
     ImdbRating: number;
     ImdbVotes: number;
     Type: string;
