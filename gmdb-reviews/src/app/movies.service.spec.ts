@@ -1,28 +1,37 @@
 import { TestBed } from '@angular/core/testing';
 
 import { MoviesService } from './movies.service';
-import  {Search} from '../data/movies.json';
+import  {Search as movieData}  from '../data/movies.json';
 
 describe('MoviesService', () => {
   let service: MoviesService;
   beforeEach(() =>{
      TestBed.configureTestingModule({})
   service = TestBed.get(MoviesService);
+
   });
 
   it('should be created', () => {
    
     expect(service).toBeTruthy();
   });
-  xit('should return movie list ', () => {
-    let  movieName = Search[0].Title;
-    let movieList = service.getAll();
-    expect(movieList.reduce((acc, cur)=>
+
+  it('should return movie list ', () => {
+    let movieName = movieData[0].Title;
+
+    let movieList;
+    service.getAll().subscribe(a => movieList = a);
+
+    expect(movieList[0].Title).toEqual(movieName);
   });
 
 
-  xit('should retrun movie by name ', () => {
-    const 
-    expect(service).toBeTruthy();
+  it('should return movie by name ', () => {
+    let  movieName = movieData[0].Title;
+    console.log(movieName);
+    let movieList;
+    service.getMovieByName('The').subscribe(a => movieList = a);
+     console.log(movieList[0])
+    expect(movieList[0].Title).toEqual(movieName);
   });
 });
