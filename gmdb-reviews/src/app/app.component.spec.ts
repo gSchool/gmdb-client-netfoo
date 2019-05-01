@@ -1,7 +1,6 @@
     import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('AppComponent', () => {
@@ -18,7 +17,6 @@ describe('AppComponent', () => {
 
       declarations: [
         AppComponent,
-        SearchComponent
       ],
     }).compileComponents();
   }));

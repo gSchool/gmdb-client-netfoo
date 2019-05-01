@@ -16,10 +16,12 @@ export class MoviesService {
 
   getAll():Observable<Movies[]>{
   this.movieStorage=movieData.map(data=>Object.assign(new Movies(),data));
+
+  if(!this.movieStorage[0]) return null; //no results found;
   return of(this.movieStorage);
   }
   getMovieByName(movieName:string):Observable<Movies[]>{
-    if(!this.movieStorage) this.getAll();
+    if(!this.movieStorage) this.getAll();     //if movielist not loaded
 
     let result;
     result=this.movieStorage.filter(movie=>{
@@ -27,10 +29,11 @@ export class MoviesService {
       if(movie.Title.match(regex)) return movie;
     });
 
+    if(!result[0]) return null; //no results found;
     return of(result); 
   }
   getMovieDetailById(imdbId:string):Observable<Movies[]>{
-    if(!this.movieStorage) this.getAll();
+    if(!this.movieStorage) this.getAll();    //if movielist not loaded
 
     let result;
     result=this.movieStorage.reduce((target, cur)=>{
