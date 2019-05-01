@@ -1,7 +1,7 @@
+    
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search.component';
-import { MoviesService } from '../movies.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -13,9 +13,9 @@ describe('SearchComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-      ],
-      providers: [MoviesService] 
+      ]
     })
+
     .compileComponents();
   }));
 
@@ -29,19 +29,27 @@ describe('SearchComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should have a search form', () => {
+  it('should have a search form', () => {
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('form')).toBeDefined();
+    // expect(compiled.querySelector('form')).toBeDefined();
+    expect(compiled.querySelector('form')).toBeTruthy();
   });
 
-  xit('should require query to submit form', () => {
+  it('should require query to submit form', () => {
     const searchForm = component.searchForm.controls;
-    expect(searchForm.query).toBeTruthy();
+    searchForm.query.setValue('Avengers');
+    expect(searchForm.query.value).toEqual('Avengers');
   });
 
-  xit('should validate form', () => {
+  it('should validate form to be false', () => {
     const searchForm = component.searchForm;
     expect(searchForm.valid).toBeFalsy();
+  });
+
+  it('should validate form to be true', () => {
+    const searchForm = component.searchForm;
+    searchForm.controls.query.setValue('Avengers')
+    expect(searchForm.valid).toBeTruthy();
   });
 
   xit('should return search results', () => {

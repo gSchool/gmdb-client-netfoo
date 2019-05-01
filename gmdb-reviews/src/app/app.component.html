@@ -1,7 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
+
+  <nav class="navbar">
+    <a class="navbar-brand">NetFoo</a>
+    <a class="navbar-brand">Login</a>
+    <a class="navbar-brand">Sign Up</a>
+    <form class="form-inline">
+      <input #box (keyup.enter)="onEnter(box.value)" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </form>
+  </nav>
+
   <h1>
     Welcome to {{ title }}!
   </h1>
- </div><div></div>
 
+ </div>
