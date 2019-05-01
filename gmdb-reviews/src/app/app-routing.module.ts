@@ -1,11 +1,10 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
 //   { path:  '', pathMatch:  'full', redirectTo:  'list'},
-  { path: 'searchResult/:value', component: SearchComponent},
+  { path: 'searchResult/:value', component: MovieListComponent},
 ];
 
 @NgModule({
