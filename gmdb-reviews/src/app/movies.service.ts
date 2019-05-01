@@ -29,5 +29,16 @@ export class MoviesService {
 
     return of(result); 
   }
+  getMovieDetailById(imdbId:string):Observable<Movies[]>{
+    if(!this.movieStorage) this.getAll();
+
+    let result;
+    result=this.movieStorage.reduce((target, cur)=>{
+      if(target) return target;
+      if(cur.imdbID===imdbId) return cur;
+    },null);
+
+    return of(result); 
+  }
 
 }

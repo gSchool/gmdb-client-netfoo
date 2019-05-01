@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { MoviesService } from './movies.service';
 import  {Search as movieData}  from '../data/movies.json';
 
@@ -28,10 +27,20 @@ describe('MoviesService', () => {
 
   it('should return movie by name ', () => {
     let  movieName = movieData[0].Title;
-    console.log(movieName);
+ 
     let movieList;
     service.getMovieByName('The').subscribe(a => movieList = a);
-     console.log(movieList[0])
+    
     expect(movieList[0].Title).toEqual(movieName);
   });
+
+  it('should return movieDetails by name ', () => {
+    let  expected = movieData[0].imdbID;
+   
+    let actual;
+    service.getMovieDetailById('tt0848228').subscribe(a => actual = a);
+    
+    expect(actual).toEqual(expected);
+  });
+
 });
