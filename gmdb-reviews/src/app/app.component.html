@@ -5,14 +5,45 @@
     <a class="navbar-brand">NetFoo</a>
     <a class="navbar-brand">Login</a>
     <a class="navbar-brand">Sign Up</a>
-    <form class="form-inline">
-      <input #box (keyup.enter)="onEnter(box.value)" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form [formGroup]='searchForm' class="form-inline"  >
+      <input formControlName="query" #box (keyup.enter)="onEnter(searchForm.controls.query.value)" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
   </nav>
 
   <h1>
     Welcome to {{ title }}!
   </h1>
+  
+  <div class="card bg-dark text-white">
+    <img class="card-img" src="https://www.wallpaperup.com/uploads/wallpapers/2013/12/26/205901/e0389e2031c3b353637bb0c3c5739117-700.jpg" alt="Card image">
+    <div class="card-img-overlay">
+      <!-- <h5 class="card-title">Card title</h5> -->
+
+    </div>
+  </div>
+
+  <!-- <div class="row" *ngFor = 'let movie of movieList'>
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" src="{{movie.Poster}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title border-bottom pb-3">{{movie.Title}} <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="float-right">Read more <i class="fas fa-angle-double-right"></i></a>
+          </div>
+      </div>
+    </div>
+  </div> -->
+
+
+  <p *ngFor = 'let movie of movieList'>
+      {{movie.Title}}
+      <!-- <a [routerLink]="['/searchResults/Thor']">Jim</a> -->
+      <a routerLink='/details/{{movie.imdbID}}'> Details... </a>
+  </p>
+
+
+
 
   <router-outlet></router-outlet>
  </div>

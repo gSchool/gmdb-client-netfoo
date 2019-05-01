@@ -18,20 +18,16 @@ describe('MoviesService', () => {
 
   it('should return movie list ', () => {
     let movieName = movieData[0].Title;
-
     let movieList;
     service.getAll().subscribe(a => movieList = a);
-
     expect(movieList[0].Title).toEqual(movieName);
   });
 
 
   it('should return movie by name ', () => {
     let  movieName = movieData[0].Title;
-    console.log(movieName);
     let movieList;
     service.getMovieByName('The').subscribe(a => movieList = a);
-     console.log(movieList[0])
     expect(movieList[0].Title).toEqual(movieName);
   });
 });
