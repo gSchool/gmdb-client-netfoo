@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from 'selenium-webdriver/http';
 import  {Search as movieData}  from '../data/movies.json';
 import { Observable,of } from 'rxjs';
 import { Movies } from './movies.js';
@@ -8,8 +7,8 @@ import { Movies } from './movies.js';
   providedIn: 'root'
 })
 export class MoviesService {
-  
   movieStorage:Movies[];
+  
   constructor() { 
     //TODO: inject [private httpClient:HttpClient]
   }
@@ -20,13 +19,14 @@ export class MoviesService {
   if(!this.movieStorage[0]) return null; //no results found;
   return of(this.movieStorage);
   }
+
   getMovieByName(movieName:string):Observable<Movies[]>{
     if(!this.movieStorage) this.getAll();     //if movielist not loaded
 
     let result;
     result=this.movieStorage.filter(movie=>{
-      let regex = new RegExp(`${movieName}`);
-      if(movie.Title.match(regex)) return movie;
+      let regex = new RegExp(`${movieName.toLowerCase()}`);
+      if(movie.Title.toLowerCase().match(regex)) return movie;
     });
 
     if(!result[0]) return null; //no results found;
