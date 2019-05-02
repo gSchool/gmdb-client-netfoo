@@ -20,6 +20,8 @@ import { Review } from './review';
     AppComponent,
     MovieDetailsComponent,
     MovieListComponent,
+    ReviewComponent,
+    SignUpComponent,
     SignUpComponent,
     LoginComponent,
     ReviewComponent
