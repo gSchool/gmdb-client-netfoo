@@ -25,8 +25,8 @@ export class MoviesService {
 
     let result;
     result=this.movieStorage.filter(movie=>{
-      let regex = new RegExp(`${movieName}`);
-      if(movie.Title.match(regex)) return movie;
+      let regex = new RegExp(`${movieName.toLowerCase()}`);
+      if(movie.Title.toLowerCase().match(regex)) return movie;
     });
 
     if(!result[0]) return null; //no results found;

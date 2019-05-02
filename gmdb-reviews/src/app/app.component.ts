@@ -14,9 +14,12 @@ export class AppComponent {
   title = 'Movies';
   movieList: Movies[];
   searchForm: FormGroup;
+  wasClicked = false;
 
-  constructor(private router: Router, private fb:FormBuilder, private ms: MoviesService) {
+  constructor(private router: Router, private fb:FormBuilder, private ms: MoviesService) { }
 
+  onClick() {
+    this.wasClicked= !this.wasClicked;
   }
 
   ngOnInit() {
