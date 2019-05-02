@@ -1,30 +1,28 @@
-import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { Movies } from '../movies';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'movieList',
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css']
 })
-export class MovieListComponent implements OnInit, OnChanges {
+export class MovieListComponent implements OnInit {
   movieList: Movies[];
   query = '';
+  wasClicked = false;
 
   constructor(private ms: MoviesService, private actRouter: ActivatedRoute) { 
     this.movieList = [];
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['query']) {
-      console.log('changes '+changes['query']);
-      this.query = this.query;
-    }
+  onClick() {
+    this.wasClicked= !this.wasClicked;
   }
 
   ngOnInit() {
+    this.ms.getAll().subscribe(movies => this.movieList = movies);
     this.update();
   }
 
