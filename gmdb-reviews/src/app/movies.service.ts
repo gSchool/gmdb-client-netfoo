@@ -32,6 +32,7 @@ export class MoviesService {
     if(!result[0]) return null; //no results found;
     return of(result); 
   }
+
   getMovieDetailById(imdbId:string):Observable<Movies>{
     if(!this.movieStorage) this.getAll();    //if movielist not loaded
 
@@ -42,6 +43,15 @@ export class MoviesService {
     },null);
 
     return of(result); 
+  }
+
+  getRandomMovies(): Observable<Movies[]>{
+    this.getAll().subscribe(data => this.movieStorage = data);
+    let randomMovies = [];
+    for (let i = 0; i < 8; i++) {
+      randomMovies.push(this.movieStorage[Math.floor(Math.random() * (+this.movieStorage.length - +0) + +0)]);
+    }
+    return of(randomMovies);
   }
 
 }
