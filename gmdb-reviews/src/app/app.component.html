@@ -1,49 +1,59 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-
+<div>
   <nav class="navbar">
-    <a class="navbar-brand">NetFoo</a>
-    <a class="navbar-brand">Login</a>
-    <a class="navbar-brand">Sign Up</a>
+    <h3>NetFoo {{ title }}</h3>
     <form [formGroup]='searchForm' class="form-inline"  >
       <input formControlName="query" #box (keyup.enter)="onEnter(searchForm.controls.query.value)" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
+    <a>Login</a>
+    <a>Sign Up</a>
+    
   </nav>
 
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  
-  <div class="card bg-dark text-white">
-    <img class="card-img" src="https://www.wallpaperup.com/uploads/wallpapers/2013/12/26/205901/e0389e2031c3b353637bb0c3c5739117-700.jpg" alt="Card image">
-    <div class="card-img-overlay">
-      <!-- <h5 class="card-title">Card title</h5> -->
+  <div class="container">
 
-    </div>
-  </div>
-
-  <!-- <div class="row" *ngFor = 'let movie of movieList'>
-    <div class="col-md-4">
-      <div class="card">
-        <img class="card-img-top" src="{{movie.Poster}}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title border-bottom pb-3">{{movie.Title}} <a href="#" class="float-right d-inline-flex share"><i class="fas fa-share-alt text-primary"></i></a></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="float-right">Read more <i class="fas fa-angle-double-right"></i></a>
-          </div>
+    <div class="row">
+      <div class="col-md-auto">
+        <img class="card-img" src="https://www.wallpaperup.com/uploads/wallpapers/2013/12/26/205901/e0389e2031c3b353637bb0c3c5739117-700.jpg" alt="Movie Collage">
       </div>
     </div>
-  </div> -->
 
+    <div *ngFor = 'let movie of movieList'>
+      <div class="movie-card">
+        <div class="movie-header backgroundIMG" 
+        [ngStyle]="{'background': 'url(' + movie.Poster + ') no-repeat 0 0', 'background-size': 'cover'}">
+          <div class="header-icon-container">
+            <a routerLink='/details/{{movie.imdbID}}'><i class="fas fa-play"></i></a>
+          </div>
+        </div><!--movie-header-->
+        <div class="movie-content">
+          <div class="movie-content-header">
+              <h3 class="movie-title">{{movie?.Title}}</h3>
+            <div class="imax-logo"></div>
+          </div>
+          <div class="movie-info">
+            <div class="info-section">
+              <label>Date & Time</label>
+              <span>Sun 8 Sept - 10:00PM</span>
+            </div><!--date,time-->
+            <div class="info-section">
+              <label>IMDb Rating</label>
+              <span>{{movie?.imdbRating}}</span>
+            </div>
+            <div class="info-section">
+              <label>{{movie.Ratings[1]?.Source}}</label>
+              <span>{{movie.Ratings[1]?.Value}}</span>
+            </div>
+            <div class="info-section">
+              <label>{{movie.Ratings[2]?.Source}}</label>
+              <span>{{movie.Ratings[2]?.Value}}</span>
+            </div>
+          </div>
+        </div><!--movie-content-->
+      </div><!--movie-card-->
+    </div>
 
-  <p *ngFor = 'let movie of movieList'>
-      {{movie.Title}}
-      <!-- <a [routerLink]="['/searchResults/Thor']">Jim</a> -->
-      <a routerLink='/details/{{movie.imdbID}}'> Details... </a>
-  </p>
-
-
-
+  </div>  
 
   <router-outlet></router-outlet>
  </div>
