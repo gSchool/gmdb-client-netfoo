@@ -41,7 +41,5 @@ export class AppComponent {
       this.ms.getMovieByName(this.searchForm.controls.query.value).subscribe(movies => this.movieList = movies);
       // console.log('When query is not empty we get: ' + this.movieList);
     }
-
-    this.router.navigate(['/searchResult]']);
   }
 }
