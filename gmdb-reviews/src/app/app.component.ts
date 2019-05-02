@@ -14,9 +14,12 @@ export class AppComponent {
   title = 'Movies';
   movieList: Movies[];
   searchForm: FormGroup;
+  wasClicked = false;
 
-  constructor(private router: Router, private fb:FormBuilder, private ms: MoviesService) {
+  constructor(private router: Router, private fb:FormBuilder, private ms: MoviesService) { }
 
+  onClick() {
+    this.wasClicked= !this.wasClicked;
   }
 
   ngOnInit() {
@@ -38,5 +41,7 @@ export class AppComponent {
       this.ms.getMovieByName(this.searchForm.controls.query.value).subscribe(movies => this.movieList = movies);
       // console.log('When query is not empty we get: ' + this.movieList);
     }
+
+    this.router.navigate(['/searchResult]']);
   }
 }
