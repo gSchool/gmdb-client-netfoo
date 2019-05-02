@@ -28,16 +28,7 @@ export class AppComponent {
   }
 
   onEnter() { 
-    // console.log(this.searchForm.controls.query.value)
     this.router.navigate([`/searchResult/${this.searchForm.controls.query.value}`])
-    if(this.searchForm.controls.query.value === ''){
-      // console.log('This query is empty')
-      this.ms.getAll().subscribe(movies => this.movieList = movies);
-    }
-    else{
-      this.ms.getMovieByName(this.searchForm.controls.query.value).subscribe(movies => this.movieList = movies);
-      // console.log('When query is not empty we get: ' + this.movieList);
-    }
   }
   verifyAuth(){
     let verification;

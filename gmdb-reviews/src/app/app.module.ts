@@ -8,8 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { ReviewComponent } from './review/review.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginFormComponent } from './login/login.component';
+import { Review } from './review';
 
 
 
@@ -19,7 +21,8 @@ import { LoginFormComponent } from './login/login.component';
     MovieDetailsComponent,
     MovieListComponent,
     SignUpComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

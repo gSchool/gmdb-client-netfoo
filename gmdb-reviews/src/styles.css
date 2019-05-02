@@ -2,8 +2,10 @@ body {
 	background-color: black;
 }
 
+a {
+	cursor: pointer;
+}
 .auth{
-	
 	/*margin:auto;*/
 	display:flex;
 	justify-content:center;
@@ -11,8 +13,6 @@ body {
 	color:white;
 	font-style:inherit;
 	padding:.8em;
-
-
 }
 
 #xxplaceholder{
