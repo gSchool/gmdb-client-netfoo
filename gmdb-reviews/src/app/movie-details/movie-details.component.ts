@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Movies } from '../movies';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../movies.service';
+import { Location } from '@angular/common'; 
+
 
 @Component({
   selector: 'movieDetails',
@@ -12,12 +14,16 @@ export class MovieDetailsComponent implements OnInit {
   movie: Movies;
   id: string;
 
-  constructor(private router: ActivatedRoute, private movieService: MoviesService) { }
+
+  constructor(private activateRouter: ActivatedRoute, private movieService: MoviesService,private location:Location) { }
 
   ngOnInit() {
-    if(this.router.params){
-      this.router.params.subscribe(({ id }) => this.id = id);
+    if(this.activateRouter.params){
+      this.activateRouter.params.subscribe(({ id }) => this.id = id);
       this.movieService.getMovieDetailById(this.id).subscribe(data => this.movie = data);
     }
   }
+goBack(){
+  this.location.back();
+}
 }

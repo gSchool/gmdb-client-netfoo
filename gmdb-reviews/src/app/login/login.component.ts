@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   feedback: String = "";
 
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router, private activeRoute: ActivatedRoute, private userService: UserService) {
+  constructor(private fb: FormBuilder, private location: Location, private activeRoute: ActivatedRoute, private userService: UserService) {
   }
   authenticate() {
     if (this.loginForm.valid) {
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
       this.userService.login(email, password).subscribe(a => verification = a);
 
       if (!verification) this.feedback = "Email not found!"
-      else this.router.navigate(['']);
+      else this.location.back();
     }
   }
 
