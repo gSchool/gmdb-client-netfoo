@@ -31,7 +31,7 @@ describe('ReviewComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ReviewComponent ],
-      providers: [{provide: ReviewService, useValue: MockReviewService}]
+      providers: [{provide: ReviewService, useValue: new MockReviewService}]
     })
     .compileComponents();
   }));
@@ -54,8 +54,15 @@ describe('ReviewComponent', () => {
     expect(component.reviews[0] instanceof Review).toEqual(true);
   });
 
-  it('should have list of reviews for the specific movie', () => {
+  it('should have list of reviews for the current movie', () => {
+    let expectedReviews: Review[];
 
+    service.getReviews('tt0848228').subscribe(review => expectedReviews = review);
+
+    component.showReviews();
+
+    expect(component.reviews).toEqual(expectedReviews);
   });
+
 
 });

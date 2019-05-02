@@ -18,7 +18,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AppComponent,
     MovieDetailsComponent,
     MovieListComponent,
-    ReviewComponent
+    ReviewComponent,
     SignUpComponent
   ],
   imports: [

@@ -1,3 +1,3 @@
-<p>
-  review works!
-</p>
+<div class='reviews' *ngFor='let review of reviews'>
+  {{review?.title}} : {{review?.description}}
+</div>
