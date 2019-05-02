@@ -98,14 +98,12 @@ describe('MovieListComponent', () => {
 
   it('should have list of all movies when query is empty', () => {
     let expectedMovies: Movies[];
-    // movieServiceSpy.getAll().subscribe(movies => console.log(movies));
     movieServiceSpy.getAll().subscribe(movies => expectedMovies = movies);
     expect(component.movieList).toEqual(expectedMovies)
   });
 
   it('should have list of searched movies', () => {
     let expectedMovies: Movies[];
-    // movieServiceSpy.getAll().subscribe(movies => console.log(movies));
     movieServiceSpy.getMovieByName('Avengers').subscribe(movies => expectedMovies = movies);
     expect(component.movieList).toEqual(expectedMovies)
   });

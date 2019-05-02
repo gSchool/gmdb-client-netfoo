@@ -15,17 +15,15 @@ describe('ReviewComponent', () => {
     stubValue: Review[];
 
     constructor(){
-      this.stubValue = [{
-        id:"1",
-        userId:"1",
-        movieId:"tt0848228",
-        title:"Good movie",
-        description:"terrible movie"
-      }];
+      this.stubValue = [];
     }
     
     getReviews(movieId : string){
       return of(this.stubValue)
+    }
+
+    addReview(review: Review) {
+      component.reviews.push(review);
     }
   }
 
@@ -63,9 +61,20 @@ describe('ReviewComponent', () => {
     expect(component.reviews).toEqual(expectedReviews);
   });
 
-  xit('should be able to view review after adding review', () => {
-    
+  it('should be able to view review after adding review', () => {
+    let expectedLength = 1;
+
+    console.log(component.reviews);
+
+    service.addReview({
+      id:"1",
+      userId:"1",
+      movieId:"tt0848228",
+      title:"Good movie",
+      description:"terrible movie"
+    });
+    component.showReviews();
+
+    expect(component.reviews.length).toEqual(expectedLength);
   });
-
-
 });
