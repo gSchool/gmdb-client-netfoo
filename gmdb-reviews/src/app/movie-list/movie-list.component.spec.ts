@@ -3,7 +3,8 @@ import { MovieListComponent } from './movie-list.component';
 import { MoviesService } from '../movies.service';
 import { Movies } from '../movies';
 import { of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MovieListComponent', () => {
   let component: MovieListComponent;
@@ -67,8 +68,12 @@ describe('MovieListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ MovieListComponent ],
-      providers: [{provide: MoviesService,  useValue: new MockMovieService}, {provide: ActivatedRoute, useValue: fakeActivatedRoute}]
+      providers: [
+        {provide: MoviesService,  useValue: new MockMovieService}, 
+        {provide: ActivatedRoute, useValue: fakeActivatedRoute}
+      ]
     })
     .compileComponents();
 

@@ -27,18 +27,20 @@ export class MovieListComponent implements OnInit {
   }
 
   update(){
-    console.log('this.actRouter.snapshot.params ' + this.actRouter.snapshot.params['query'])
-    this.actRouter.params.subscribe(data => {
-      this.query = data.query;
-      console.log('This is paramater' + this.query);
-      if(this.query===''){
-        console.log('This query is empty')
-        this.ms.getAll().subscribe(movies => this.movieList = movies);
-      }
-      else{
-        this.ms.getMovieByName(this.query).subscribe(movies => this.movieList = movies);
-        console.log('When query is not empty we get: ' + this.movieList[0].Title);
-      }
-    });
+    if(this.actRouter.params){
+      this.actRouter.params.subscribe(data => {
+        try {
+          this.query = data.query;
+          if(this.query===''){
+            this.ms.getAll().subscribe(movies => this.movieList = movies);
+          }
+          else{
+            this.ms.getMovieByName(this.query).subscribe(movies => this.movieList = movies);
+          }
+        } catch (error) {
+          //console.log(error);
+        }
+      });
+    }
   }
 }

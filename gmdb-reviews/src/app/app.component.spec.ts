@@ -40,12 +40,11 @@ describe('AppComponent', () => {
   it('should render title in a h1 tag', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Movies');
+    expect(compiled.querySelector('h3').textContent).toContain('Movies');
   });
 
   it('should have a search form', () => {
     const compiled = fixture.nativeElement;
-    // expect(compiled.querySelector('form')).toBeDefined();
     expect(compiled.querySelector('form')).toBeTruthy();
   });
 
