@@ -31,9 +31,12 @@ export class SignUpComponent implements OnInit {
       let success;
       this.userService.signUp(email,password).subscribe(a=>success=a); 
       console.log(success);
-     if(success)   this.location.back();
-     else this.feedback = "Email already in the system!"; 
-      
+     if(success){
+          this.location.back();
+     }else{
+
+     this.feedback = "Email already in the system!"; 
+     }
     }
 
 
