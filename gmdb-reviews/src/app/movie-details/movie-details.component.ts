@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../movies.service';
 
 @Component({
-  selector: 'app-movie-details',
+  selector: 'movieDetails',
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css']
 })
