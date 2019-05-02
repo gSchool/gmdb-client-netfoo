@@ -10,6 +10,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { ReviewComponent } from './review/review.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginFormComponent } from './login/login.component';
+import { Review } from './review';
 
 
 
@@ -18,8 +20,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AppComponent,
     MovieDetailsComponent,
     MovieListComponent,
+    SignUpComponent,
+    LoginFormComponent,
     ReviewComponent
-    SignUpComponent
   ],
   imports: [
     BrowserModule,

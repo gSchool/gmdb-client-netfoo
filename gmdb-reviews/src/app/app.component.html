@@ -6,11 +6,16 @@
       <input formControlName="query" #box (keyup.enter)="onEnter(searchForm.controls.query.value)" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
 
-    <div class="userAccess">
-      <a href="#"> Login </a>
-      <a routerLink="/signup"> SignUp </a>
+    
+    <div class="userAccess" *ngIf="!verifyAuth()">
+      <a href="#" routerLink="/login"> Login </a>
+      <a href="#" routerLink="/signup"> SignUp </a>
     </div>
     
+    <div class="userAccess" *ngIf="verifyAuth()">
+      <a href="#" >{{getUserEmail()}}</a>
+      <a href="#" (click)="logOut()"> Logout </a>
+    </div>
   </nav>
 
   <router-outlet></router-outlet>
