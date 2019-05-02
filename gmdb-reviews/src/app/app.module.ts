@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { ReviewComponent } from './review/review.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -18,6 +19,7 @@ import { ReviewComponent } from './review/review.component';
     MovieDetailsComponent,
     MovieListComponent,
     ReviewComponent
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
