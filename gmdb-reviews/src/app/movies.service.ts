@@ -32,7 +32,7 @@ export class MoviesService {
     if(!result[0]) return null; //no results found;
     return of(result); 
   }
-  getMovieDetailById(imdbId:string):Observable<Movies[]>{
+  getMovieDetailById(imdbId:string):Observable<Movies>{
     if(!this.movieStorage) this.getAll();    //if movielist not loaded
 
     let result;
