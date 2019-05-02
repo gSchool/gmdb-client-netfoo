@@ -1,12 +1,14 @@
 <div id="movie-details">
 
 
-  <h2>{{movie.Title}}</h2>
+  <h2 id="movie-title">{{movie.Title}}</h2>
 
 
   <div id="details">
-    <a href={{movie.Website}}><img class="movie-img" src={{movie.Poster}} alt={{movie.poster}} /></a>
-    <ul>
+    <div>
+      <a href={{movie.Website}}><img class="movie-img" src={{movie.Poster}} alt={{movie.poster}} /></a>
+    </div>
+    <ul id="movie-specifics">
       <li>Title: {{movie.Title}}</li>
       <li>Released: {{movie.Released}}</li>
       <li>Rating: {{movie.Rated}}</li>
@@ -35,8 +37,8 @@
     </div>
   </div>
 
-  <button id="addToFavorites" >Add to favorites</button>
-  <button id="backToSearch" >Back to Search Results</button>
+  <button class="btn btn-primary" id="addToFavorites" >Add to favorites</button>
+  <button class="btn btn-primary" id="backToSearch" >Back to Search Results</button>
 
 
 
