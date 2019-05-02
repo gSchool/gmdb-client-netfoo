@@ -16,10 +16,15 @@ export class UserService {
     this.userEmail = "";
   }
 
-  signUp(email: string, password: string) {
-    this.userStorage[email] = password;
-    this.authenticated = true;
-    this.userEmail = email;
+  signUp(email: string, password: string):Observable<boolean> {
+    if(this.userStorage.hasOwnProperty(email))return of(false)
+    else {
+      this.userStorage[email] = password;
+      this.authenticated = true;
+      this.userEmail = email;
+      return of(true);
+    }
+    
   }
 
   login(email: string, password: string): Observable<boolean> {

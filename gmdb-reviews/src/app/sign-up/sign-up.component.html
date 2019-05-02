@@ -1,7 +1,7 @@
 <form id="signup" class="auth" [formGroup]="formSignup" (ngSubmit)="signup()">
   <title>Enter your information to SignUp or press login </title>
 
-
+  <label>{{message}}</label>
   <label>Email:</label>
   <input type="email" formControlName="email" required />
   <label *ngIf="formSignup.controls.email.invalid && formSignup.controls.email.dirty" class="alert alert-danger">
