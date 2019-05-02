@@ -9,9 +9,15 @@
     color: #f2f2f2;
 }
 
-.navbar > h3 {
+.navbar > a:first-child {
+  margin-left: 2%;
   color: red;
 }
+
+.navbar > a:first-child:hover {
+  transform: scale(1.1);
+}
+
 
 .userAccess {
   margin-right: 3%;
