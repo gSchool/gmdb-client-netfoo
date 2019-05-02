@@ -4,6 +4,7 @@ import { ReviewComponent } from './review.component';
 import { Review } from '../review';
 import { of } from 'rxjs';
 import { ReviewService } from '../review.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
@@ -30,6 +31,7 @@ describe('ReviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ ReviewComponent ],
       providers: [{provide: ReviewService, useValue: new MockReviewService}]
     })
@@ -56,12 +58,13 @@ describe('ReviewComponent', () => {
 
   it('should have list of reviews for the current movie', () => {
     let expectedReviews: Review[];
-
     service.getReviews('tt0848228').subscribe(review => expectedReviews = review);
-
     component.showReviews();
-
     expect(component.reviews).toEqual(expectedReviews);
+  });
+
+  xit('should be able to view review after adding review', () => {
+    
   });
 
 
