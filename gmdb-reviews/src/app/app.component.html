@@ -19,38 +19,36 @@
     </div>
 
     <div *ngFor = 'let movie of movieList'>
+
       <div class="movie-card">
         <div class="movie-header backgroundIMG" 
         [ngStyle]="{'background': 'url(' + movie.Poster + ') no-repeat 0 0', 'background-size': 'cover'}">
           <div class="header-icon-container">
             <a routerLink='/details/{{movie.imdbID}}'><i class="fas fa-play"></i></a>
           </div>
-        </div><!--movie-header-->
+        </div>
         <div class="movie-content">
           <div class="movie-content-header">
               <h3 class="movie-title">{{movie?.Title}}</h3>
-            <div class="imax-logo"></div>
+              <i class="fas fa-star text-muted"></i>
           </div>
           <div class="movie-info">
             <div class="info-section">
-              <label>Date & Time</label>
-              <span>Sun 8 Sept - 10:00PM</span>
-            </div><!--date,time-->
+              <label>Released</label>
+              <span>{{movie?.Year}}</span>
+            </div>
+            <div class="info-section">
+              <label>Rated</label>
+              <span>{{movie?.Rated}}</span>
+            </div>
             <div class="info-section">
               <label>IMDb Rating</label>
               <span>{{movie?.imdbRating}}</span>
             </div>
-            <div class="info-section">
-              <label>{{movie.Ratings[1]?.Source}}</label>
-              <span>{{movie.Ratings[1]?.Value}}</span>
-            </div>
-            <div class="info-section">
-              <label>{{movie.Ratings[2]?.Source}}</label>
-              <span>{{movie.Ratings[2]?.Value}}</span>
-            </div>
           </div>
-        </div><!--movie-content-->
-      </div><!--movie-card-->
+        </div>
+      </div>
+
     </div>
 
   </div>  
