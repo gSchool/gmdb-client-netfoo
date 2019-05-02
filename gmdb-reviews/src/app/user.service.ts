@@ -6,15 +6,41 @@ import { of, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  userStorage:Object;
+  userStorage: Object;
+  authenticated: boolean;
+  userEmail:string;
+
   constructor() {
-    this.userStorage ={};
-   }
-  signUp(email:string,password:string){
-    this.userStorage[email] =password;
+    this.userStorage = {};
+    this.authenticated = false;
+    this.userEmail = "";
   }
-  login(email:string,password:string):Observable<boolean>{
-    return of((this.userStorage[email]===password))
+
+  signUp(email: string, password: string) {
+    this.userStorage[email] = password;
+    this.authenticated = true;
+    this.userEmail = email;
+  }
+
+  login(email: string, password: string): Observable<boolean> {
+    if (!(this.userStorage[email] === password)) return of(false);
+    else {
+      this.authenticated = true;
+      this.userEmail = email;
+      return of(true);
+    }
+  }
+
+  isAuthenticated(): Observable<boolean> {
+    return of(this.authenticated);
+  }
+
+  logout() {
+    this.authenticated = false;
+    this.userEmail="";
+  }
+  getEmail():Observable<string>{
+  return of(this.userEmail);
   }
 
 }
