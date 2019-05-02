@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 
 
@@ -13,6 +14,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 @NgModule({
   declarations: [
     AppComponent,
+    MovieDetailsComponent,
     MovieListComponent
   ],
   imports: [
