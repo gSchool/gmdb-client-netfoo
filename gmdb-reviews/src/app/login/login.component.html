@@ -1,21 +1,22 @@
-<form id="login" [formGroup]="loginForm" (ngSubmit)="authenticate()">
-  <title>Enter your credentials to Login or press Signup to join this community</title>
-  <label class="lbl-danger">{{feedback}}</label>
-  <label>Email:</label>
-  <input type="email" formControlName="email" required />
-  <label  *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.dirty" 
-        class="alert alert-danger" >
-        email is invalid
-  </label>
-  <br />
-  <label>Password:</label>
-  <input type="password" formControlName="password" required />
-  <label *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty" 
-        class="alert alert-danger" >
-        password is invalid
-  </label>
-  <br />
-  <br />
-  <input class="btn btn-primary" type="submit" value="Login">
-
-</form>
+<form id="login" [formGroup]="loginForm" class="auth" (ngSubmit)="authenticate()">
+    <title>Enter your credentials to Login or press Signup to join this community</title>
+    <label class="lbl-danger">{{feedback}}</label>
+    <label>Email:</label>
+    <input type="email" formControlName="email" required />
+    <label  *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.dirty" 
+          class="alert alert-danger" >
+          email is invalid
+    </label>
+    <br />
+    <label>Password:</label>
+    <input type="password" formControlName="password" required />
+    <label *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty" 
+          class="alert alert-danger" >
+          password is invalid
+    </label>
+    <br />
+    <br />
+    <input class="btn btn-primary" type="submit" value="Login">
+  
+  </form>
+  

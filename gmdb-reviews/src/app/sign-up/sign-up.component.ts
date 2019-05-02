@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 export class SignUpComponent implements OnInit {
 
   formSignup:FormGroup;
-  
+  feedback:string="";
 
   constructor(private fb: FormBuilder, private router:Router,private userService:UserService) { }
 
@@ -26,10 +26,11 @@ export class SignUpComponent implements OnInit {
     if(this.formSignup.valid){
       
       let {email,password} = this.formSignup.value;
-      this.userService.signUp(email,password);   //subscribing
+      let success;
+      this.userService.signUp(email,password).subscribe(a=>success=a); 
+     if(!success)   this.feedback = "Email already in the system!";
+     else  this.router.navigate(['']);
      
-       this.router.navigate(['']);
-   
       
     }
 
