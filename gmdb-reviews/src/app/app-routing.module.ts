@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: "signup", component: SignUpComponent},
   {path: "login", component: LoginComponent},
   {path: "addReview", component: ReviewComponent}
-
+  { path: '**', component: MovieListComponent},
 ];
 
 @NgModule({

@@ -1,21 +1,31 @@
 <form id="signup" class="auth" [formGroup]="formSignup" (ngSubmit)="signup()">
-  <title>Enter your information to SignUp or press login </title>
+  <div class='bold-line'></div>
+  <div class='container'>
+    <div class='window'>
+      <div class='overlay'></div>
+      <div class='content'>
+        <div class='welcome'>Hello There!</div>
+        <div class='subtitle'>*By signing up you agree to the ridiculously long terms that you didn't bother to read</div>
 
-  <label>{{message}}</label>
-  <label>Email:</label>
-  <input type="email" formControlName="email" required />
-  <label *ngIf="formSignup.controls.email.invalid && formSignup.controls.email.dirty" class="alert alert-danger">
-    email is invalid
-  </label>
+        <div class='input-fields'>
+          <!-- <input type='text' placeholder='Username' class='input-line full-width'></input> -->
+          <input formControlName="email" required type='email' placeholder='Email' class='input-line full-width' />
+          <label *ngIf="formSignup.controls.email.invalid && formSignup.controls.email.dirty" class="alert alert-danger">
+            email is invalid
+          </label>
 
-  <br />
-  <label>Password:</label>
-  <input type="password" formControlName="password" required />
-  <label *ngIf="formSignup.controls.password.invalid && formSignup.controls.password.dirty" class="alert alert-danger">
-    password must have at least six charaters
-  </label>
-  <br />
-  <br />
-  <input class="btn btn-primary" type="submit" value="signup">
+<!--   <label class="lbl lbl-danger">{{this.feedback}}</label> -->
 
+
+          <input formControlName="password" required type='password' placeholder='Password' class='input-line full-width' />
+          <label *ngIf="formSignup.controls.password.invalid && formSignup.controls.password.dirty" class="alert alert-danger">
+            password must have at least six charaters
+          </label>
+        </div>
+
+        <button type="submit" value="signup" class='ghost-round full-width'>Create Account</button>
+        
+      </div>
+    </div>
+  </div>
 </form>

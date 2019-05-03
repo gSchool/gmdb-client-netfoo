@@ -8,13 +8,13 @@
 
     
     <div class="userAccess" *ngIf="!verifyAuth()">
-      <a href="#" routerLink="/login"> Login </a>
-      <a href="#" routerLink="/signup"> SignUp </a>
+      <a routerLink="/login"> Login </a>
+      <a routerLink="/signup"> SignUp </a>
     </div>
     
     <div class="userAccess" *ngIf="verifyAuth()">
-      <a href="#" >{{getUserEmail()}}</a>
-      <a href="#" (click)="logOut()"> Logout </a>
+      <a>{{getUserEmail()}}</a>
+      <a (click)="logOut()"> Logout </a>
     </div>
   </nav>
 
