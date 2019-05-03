@@ -1,4 +1,4 @@
-<form id="login" [formGroup]="loginForm" class="auth" (ngSubmit)="authenticate()">
+<!-- <form id="login" [formGroup]="loginForm" class="auth" (ngSubmit)="authenticate()">
     <title>Enter your credentials to Login or press Signup to join this community</title>
     <label class="lbl-danger">{{feedback}}</label>
     <label>Email:</label>
@@ -18,5 +18,32 @@
     <br />
     <input class="btn btn-primary" type="submit" value="Login">
   
-  </form>
+  </form> -->
+
+
+  <form id="login" [formGroup]="loginForm" class="auth" (ngSubmit)="authenticate()">
+  <div class='bold-line'></div>
+  <div class='container'>
+    <div class='window'>
+      <div class='overlay'></div>
+      <div class='content'>
+        <div class='welcome'>Welcome back :)</div>
+
+        <div class='input-fields'>
+          <!-- <input type='text' placeholder='Username' class='input-line full-width'></input> -->
+          <input formControlName="email" required type='email' placeholder='Email' class='input-line full-width' />
+          <label  *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.dirty" 
+          class="alert alert-danger">email is invalid</label>
+
+          <input formControlName="password" required type='password' placeholder='Password' class='input-line full-width' />
+          <label *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty" 
+          class="alert alert-danger">password is invalid</label>
+        </div>
+
+        <button type="submit" value="Login" class='ghost-round full-width'>Login</button>
+        
+      </div>
+    </div>
+  </div>
+</form>
   
