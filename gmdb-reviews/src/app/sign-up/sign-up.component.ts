@@ -12,10 +12,9 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 })
 export class SignUpComponent implements OnInit {
 
-  formSignup:FormGroup;
-  feedback:string="";
+  formSignup: FormGroup;
+  feedback: string = "";
   
-
   constructor(private fb: FormBuilder, private lation:Location,private userService:UserService, private router: Router) { }
 
   ngOnInit() {
@@ -28,25 +27,15 @@ export class SignUpComponent implements OnInit {
 
   signup(){
     if(this.formSignup.valid){
-      
       let {email,password,confirmPassword} = this.formSignup.value;
 
       let success;
-      if( password!==confirmPassword){
-        return;
-      } 
+      if( password!==confirmPassword){return;} 
+      
       this.userService.signUp(email,password).subscribe(a=>success=a); 
-      console.log(success);
-     if(success){
-          // this.location.back();
-          this.router.navigate(['/']);
-
-     }else{
-
-     this.feedback = "Email already in the system!"; 
-     }
+      success ?  this.router.navigate(['/']) : this.feedback = "Email already in the system!"; 
     }
-
-
   }
+
+
 }
