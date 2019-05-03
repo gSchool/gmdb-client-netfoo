@@ -11,9 +11,14 @@
   <br />
   <label>Password:</label>
   <input type="password" formControlName="password" required />
+  <label>Confirm Password:</label>
+  <input type="password" formControlName="confirmPassword" required />
   <label *ngIf="formSignup.controls.password.invalid && formSignup.controls.password.dirty" class="alert alert-danger">
     password must have aleast six charaters
   </label>
+  <label *ngIf="formSignup.controls.password.value !== formSignup.controls.confirmPassword.value" class="alert alert-danger">
+      Password confirmation doesn't match password
+    </label>
   <br />
   <br />
   <input class="btn btn-primary" type="submit" value="signup">
