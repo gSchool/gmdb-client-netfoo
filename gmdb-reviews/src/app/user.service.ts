@@ -17,12 +17,8 @@ export class UserService {
   }
 
   signUp(email: string, password: string):Observable<boolean> {
-    console.log('is in storage:',this.userStorage.hasOwnProperty(email));
 
-    if(this.userStorage.hasOwnProperty(email)){
-       return of(false);
-
-    }
+    if(this.userStorage[email]) return of(false);
     else {
       this.userStorage[email] = password;
       this.authenticated = true;
