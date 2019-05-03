@@ -29,7 +29,7 @@ export class SignUpComponent implements OnInit {
 
       let success;
       this.userService.signUp(email,password).subscribe(a=>success=a); 
-      console.log(success);
+//       console.log(success);
       success ? this.location.back() : this.feedback = "Email already in the system!"; 
     }
   }

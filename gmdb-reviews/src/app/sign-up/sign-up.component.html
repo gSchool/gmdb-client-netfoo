@@ -14,6 +14,9 @@
             email is invalid
           </label>
 
+<!--   <label class="lbl lbl-danger">{{this.feedback}}</label> -->
+
+
           <input formControlName="password" required type='password' placeholder='Password' class='input-line full-width' />
           <label *ngIf="formSignup.controls.password.invalid && formSignup.controls.password.dirty" class="alert alert-danger">
             password must have at least six charaters
