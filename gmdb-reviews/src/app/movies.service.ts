@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import  {Search as movieData}  from '../data/movies.json';
+import { Search as movieData } from '../data/movies.json';
 import { Observable,of } from 'rxjs';
 import { Movies } from './movies.js';
 
@@ -47,11 +47,14 @@ export class MoviesService {
 
   getRandomMovies(): Observable<Movies[]>{
     this.getAll().subscribe(data => this.movieStorage = data);
-    let randomMovies = [];
-    for (let i = 0; i < 8; i++) {
-      randomMovies.push(this.movieStorage[Math.floor(Math.random() * (+this.movieStorage.length - +0) + +0)]);
+    let randomMoviesList = [];
+    while (randomMoviesList.length != 100) {
+      let randomIndex = Math.floor(Math.random() * (+this.movieStorage.length - +0) + +0);
+      if (!randomMoviesList.includes(this.movieStorage[randomIndex])) {
+        randomMoviesList.push(this.movieStorage[randomIndex]);
+      }
     }
-    return of(randomMovies);
+    return of(randomMoviesList);
   }
 
 }
