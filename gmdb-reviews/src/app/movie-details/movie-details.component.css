@@ -1,34 +1,63 @@
-#movie-details {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+.content {
+    margin: 5% 7% 8% 7%;
 }
 
-#movie-title {
-    color:white; 
+.col-sm-4 {
+    min-height: 350px;
+    min-width: 200px;
 }
 
-#details {
-    display:flex;
-    justify-content:center;
-    align-items:center;
+.col-sm-8 {
+    min-height: 650px;
+    height: auto;
+    color: white;
 }
 
-ul {
-    list-style-type:none;
-    color:white;
-    text-align:justify;
-    word-wrap:break-word;
+.movieInfo {
+    padding-left: 5%;
 }
 
-#addToFavorites {
-    background-color:yellow;
-    color:#007bff;
-    margin-bottom: .3em;
+/*.btn {
+    width: 150px;
+}*/
+
+.btn-outline-warning > a {
+    color: inherit;
+    text-decoration: none;
 }
 
-#backToSearch {
-    margin-bottom: .8em;
+.movieInfo > h2 {
+    text-align: center;
+    padding-bottom: 3%;
+    font-size: 2.5em;
+}
+
+.movieInfo > p:nth-child(2) { 
+    font-style: italic;
+    margin-left: 1%;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 1.5em;
+    text-align: center;
+    padding-bottom: 3%;
+}
+
+.movieInfo > h5 {
+    text-align: center;
+}
+
+#ratings {
+    color: red;
+    padding-top: 3%;
+}
+
+
+.col-8 {
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+
+strong {
+    color: #F5B7B1;
 }
 
