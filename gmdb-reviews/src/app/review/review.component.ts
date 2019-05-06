@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ReviewsService } from '../reviews.service';
 import { Review } from '../review';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReviewsService } from '../reviews.service';
 
 @Component({
   selector: 'reviewsList',
@@ -18,7 +18,7 @@ export class ReviewComponent implements OnInit {
   addReviewForm: FormGroup;
   
   constructor(private rs: ReviewsService, private router: Router, private fb: FormBuilder) {
-    this.reviews = [];
+    this.reviews;
     this.showAddReviewForm = false;
    }
 
