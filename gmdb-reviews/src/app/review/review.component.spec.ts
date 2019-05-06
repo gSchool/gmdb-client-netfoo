@@ -5,6 +5,7 @@ import { Review } from '../review';
 import { of } from 'rxjs';
 import { ReviewService } from '../review.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
@@ -29,9 +30,9 @@ describe('ReviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, ReactiveFormsModule],
       declarations: [ ReviewComponent ],
-      providers: [{provide: ReviewService, useValue: new MockReviewService}]
+      providers: [{provide: ReviewService, useValue: new MockReviewService}, FormBuilder]
     })
     .compileComponents();
   }));

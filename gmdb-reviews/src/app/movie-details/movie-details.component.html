@@ -20,13 +20,13 @@
         <p><strong>Runtime: </strong>{{movie?.Runtime}}</p>
         <p><strong>Language: </strong>{{movie?.Language}}</p>
         <p *ngIf="movie?.Awards !== 'N/A'"><strong>Awards: </strong>{{movie?.Awards}}</p>
-        <p *ngIf="movie?.BoxOffice !== 'N/A'"><strong>Box Office: </strong>{{movie?.BoxOffice}}</p>
+        <p *ngIf="movie?.BoxOffice"><strong>Box Office: </strong>{{movie?.BoxOffice}}</p>
 
         <h5 id="ratings">Ratings</h5>
         <p><strong>IMDb Rating: </strong>{{movie?.imdbRating}}</p>
-        <p><strong>{{movie?.Ratings[0].Source}}: </strong>{{movie?.Ratings[0].Value}}</p>
-        <p><strong>{{movie?.Ratings[1].Source}}: </strong>{{movie?.Ratings[1].Value}}</p>
-        <p><strong>{{movie?.Ratings[2].Source}}: </strong>{{movie?.Ratings[2].Value}}</p>
+        <p *ngIf="movie?.Ratings[0]?.Source"><strong>{{movie?.Ratings[0]?.Source}}: </strong>{{movie?.Ratings[0]?.Value}}</p>
+        <p *ngIf="movie?.Ratings[1]?.Source"><strong>{{movie?.Ratings[1]?.Source}}: </strong>{{movie?.Ratings[1]?.Value}}</p>
+        <p *ngIf="movie?.Ratings[2]?.Source"><strong>{{movie?.Ratings[2]?.Source}}: </strong>{{movie?.Ratings[2]?.Value}}</p>
 
       </div>
     </div>
@@ -34,7 +34,7 @@
     <div class="col"></div>
     <div class="col-8 btn">
       <div class="btn-group-lg btn-group col align-self-center" role="group" aria-label="group of buttons">
-        <button (click)="toggle()" id="bt" type="button" class="btn btn-outline-secondary">Reviews</button>
+        <button (click)="toggle()" (click)="getReviews()" id="bt" type="button" class="btn btn-outline-secondary">Reviews</button>
         <button type="button" class="btn btn-outline-warning" id="addReview"><a routerLink="/addReview">Add Review</a></button>
         <button type="button" class="btn btn-outline-success" id="addToFavorites">Add to List</button>
         <button type="button" class="btn btn-outline-info" id="backToSearch" (click)="goBack()">Back to Search</button>
@@ -44,15 +44,13 @@
 
     <div class="col-8 showReviews">
         <ng-container *ngIf="show">
-            <div>
-                <div>
-                    <label>Additional Information (optional):</label>
-                    <div><textarea rows="5" cols="70"></textarea></div>
-                </div>
+            <div *ngFor="let review of reviews">
+              <label>{{review?.userId}}</label>
+              <label>{{review?.title}}</label>
+              <label>{{review?.description}}</label>
             </div>
         </ng-container>
     </div>
-
 
   </div>
 </div>

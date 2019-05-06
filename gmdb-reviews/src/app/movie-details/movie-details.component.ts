@@ -3,8 +3,8 @@ import { Movies } from '../movies';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../movies.service';
 import { Location } from '@angular/common'; 
-import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Review } from '../review';
+import { ReviewsService } from '../reviews.service';
 
 
 
@@ -15,10 +15,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MovieDetailsComponent implements OnInit {
   movie: Movies;
-  id: string;
+  id: string; //imdb id
   show:boolean = false;
+  reviews: Review[];
 
-  constructor(private activateRouter: ActivatedRoute, private movieService: MoviesService,private location:Location) { }
+  constructor(private activateRouter: ActivatedRoute, private movieService: MoviesService,private location:Location, private rs: ReviewsService) { }
 
   ngOnInit() {
     if(this.activateRouter.params){
@@ -35,5 +36,7 @@ export class MovieDetailsComponent implements OnInit {
     this.show = !this.show;
   }
 
-
+  getReviews(){
+    this.rs.getReviewsByMovieId(this.id).subscribe(reviews => this.reviews = reviews);
+  }
 }

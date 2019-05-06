@@ -7,11 +7,9 @@ describe('MoviesService', () => {
   beforeEach(() =>{
      TestBed.configureTestingModule({})
   service = TestBed.get(MoviesService);
-
   });
 
   it('should be created', () => {
-   
     expect(service).toBeTruthy();
   });
 

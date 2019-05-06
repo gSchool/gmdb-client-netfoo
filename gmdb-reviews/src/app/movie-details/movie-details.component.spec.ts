@@ -5,6 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {ActivatedRoute} from '@angular/router';
 import { Observable,of } from 'rxjs';
 import { Movies } from '../movies';
+import { ReviewService } from '../review.service';
+import { ReviewsService } from '../reviews.service';
 
 describe('MovieDetailsComponent', () => {
   let component: MovieDetailsComponent;
@@ -76,7 +78,8 @@ describe('MovieDetailsComponent', () => {
       declarations: [ MovieDetailsComponent ],
       providers:[
         {provide: ActivatedRoute, useValue: params},
-        {provide: MoviesService,  useValue: new MockMovieService}
+        {provide: MoviesService,  useValue: new MockMovieService},
+        ReviewsService
         ]
     })
     .compileComponents();
