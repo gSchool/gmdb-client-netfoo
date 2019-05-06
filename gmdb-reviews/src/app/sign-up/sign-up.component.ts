@@ -15,7 +15,7 @@ export class SignUpComponent implements OnInit {
   formSignup: FormGroup;
   feedback: string = "";
   
-  constructor(private fb: FormBuilder, private lation:Location,private userService:UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, private lation:Location, private userService:UserService, private router: Router) { }
 
   ngOnInit() {
     this.formSignup = this.fb.group({
@@ -36,6 +36,4 @@ export class SignUpComponent implements OnInit {
       success ?  this.router.navigate(['/']) : this.feedback = "Email already in the system!"; 
     }
   }
-
-
 }
