@@ -1,16 +1,16 @@
 <div class="content">
   <div class="row" >
 
-    <div class="col-sm-4" [ngStyle]="{'background': 'url(' + movie?.Poster + ') no-repeat 0 0', 'background-size': '100% 100%'}">
+    <div class="col-sm-6" [ngStyle]="{'background': 'url(' + movie?.Poster + ') no-repeat 0 0', 'background-size': '100% 100%'}">
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-sm-6">
       <div class="movieInfo">
 
         <h2>{{movie?.Title}}</h2>
         <p>{{movie?.Plot}}</p>
         
-        <p *ngIf="movie?.Released !== 'N/A'"><strong>Released: </strong>{{movie?.Released}}</p>
+        <p *ngIf="movie?.Released !== 'N/A'"><strong>Released:</strong>{{movie?.Released}}</p>
         <p><strong>Genre: </strong>{{movie?.Genre}}</p>
         <p *ngIf="movie?.Rated !== 'N/A'"><strong>Rated: </strong>{{movie?.Rated}}</p>
         <p><strong>Actors: </strong>{{movie?.Actors}}</p>
@@ -32,14 +32,27 @@
     </div>
 
     <div class="col"></div>
-    <div class="col-8">
+    <div class="col-8 btn">
       <div class="btn-group-lg btn-group col align-self-center" role="group" aria-label="group of buttons">
+        <button (click)="toggle()" id="bt" type="button" class="btn btn-outline-secondary">Reviews</button>
         <button type="button" class="btn btn-outline-warning" id="addReview"><a routerLink="/addReview">Add Review</a></button>
         <button type="button" class="btn btn-outline-success" id="addToFavorites">Add to List</button>
         <button type="button" class="btn btn-outline-info" id="backToSearch" (click)="goBack()">Back to Search</button>
       </div>
     </div>
     <div class="col"></div>
+
+    <div class="col-8 showReviews">
+        <ng-container *ngIf="show">
+            <div>
+                <div>
+                    <label>Additional Information (optional):</label>
+                    <div><textarea rows="5" cols="70"></textarea></div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
 
   </div>
 </div>

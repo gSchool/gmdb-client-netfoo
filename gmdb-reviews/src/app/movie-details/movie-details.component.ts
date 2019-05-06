@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Movies } from '../movies';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../movies.service';
 import { Location } from '@angular/common'; 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -13,7 +16,7 @@ import { Location } from '@angular/common';
 export class MovieDetailsComponent implements OnInit {
   movie: Movies;
   id: string;
-
+  show:boolean = false;
 
   constructor(private activateRouter: ActivatedRoute, private movieService: MoviesService,private location:Location) { }
 
@@ -23,7 +26,14 @@ export class MovieDetailsComponent implements OnInit {
       this.movieService.getMovieDetailById(this.id).subscribe(data => this.movie = data);
     }
   }
-goBack(){
-  this.location.back();
-}
+
+  goBack(){
+    this.location.back();
+  }
+
+  toggle() {
+    this.show = !this.show;
+  }
+
+
 }

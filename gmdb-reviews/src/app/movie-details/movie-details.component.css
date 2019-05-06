@@ -4,10 +4,10 @@
 
 .col-sm-4 {
     min-height: 350px;
-    min-width: 200px;
+    min-width: 300px;
 }
 
-.col-sm-8 {
+.col-sm-6 {
     min-height: 650px;
     height: auto;
     color: white;
@@ -16,10 +16,6 @@
 .movieInfo {
     padding-left: 5%;
 }
-
-/*.btn {
-    width: 150px;
-}*/
 
 .btn-outline-warning > a {
     color: inherit;
@@ -45,19 +41,26 @@
     text-align: center;
 }
 
+#reviews {
+    color: yellow;
+}
+
 #ratings {
     color: red;
     padding-top: 3%;
 }
 
 
-.col-8 {
-    margin-top: 5%;
-    margin-left: 10%;
+.col-8.btn {
+    margin-top: 3%;
 }
-
 
 strong {
     color: #F5B7B1;
+    font-size: 1.1em;
+    padding-right:.5em
 }
 
+.showReviews {
+    width: 100%;
+}
