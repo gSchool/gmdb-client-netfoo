@@ -49,7 +49,7 @@ export class ReviewComponent implements OnInit {
   }
 
   addReview(){
-    // this.router.navigate([`/review/add`]); 
+    this.router.navigate([`/review/add`]); 
   }
 
   toggleAddReviewForm(){

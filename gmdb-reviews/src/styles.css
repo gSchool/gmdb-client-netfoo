@@ -5,7 +5,8 @@ body {
 a {
 	cursor: pointer;
 }
-.auth{
+
+.auth {
 	/*margin:auto;*/
 	display:flex;
 	justify-content:center;

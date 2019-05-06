@@ -1,4 +1,4 @@
-<div class='reviews' *ngFor='let review of reviews'>
+<!-- <div class='reviews' *ngFor='let review of reviews'>
   {{review?.title}} : {{review?.description}}
 </div>
 
@@ -16,4 +16,11 @@
         <input class="btn btn-primary" type="submit" value="Add">
     </form>
 
-</div>
+</div> -->
+
+
+<form class="addReview" [formGroup]="addReviewForm" (ngSubmit)="addReview()">
+	<input placeholder="Title" class="title" formControlName="title" required />
+    <textarea rows="10" cols="100" name="subject" placeholder="Please enter text of your review" class="message" formControlName="description" required></textarea>
+    <input name="submit" class="btn" type="submit" value="ADD" />
+</form>
