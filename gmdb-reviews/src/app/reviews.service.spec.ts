@@ -4,7 +4,8 @@ import { ReviewsService } from './reviews.service';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserService } from './user.service';
 
 describe('ReviewsService', () => {
   let service: ReviewsService;
@@ -34,7 +35,7 @@ describe('ReviewsService', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, ReactiveFormsModule, FormsModule],
       providers: [
         {provide: HttpClient,  useValue: new fakeHttpClient}, 
         ReviewsService,

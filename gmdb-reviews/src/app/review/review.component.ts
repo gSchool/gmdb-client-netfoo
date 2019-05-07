@@ -3,42 +3,44 @@ import { ReviewsService } from '../reviews.service';
 import { Review } from '../review';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
 
 @Component({
-  selector: 'addReviewForm',
+  selector: 'reviewForm',
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
-
   reviews: Review[];
   @Input()
   movieId: string;
-  showAddReviewForm: boolean;
   addReviewForm: FormGroup;
+  email: string;
   
-  constructor(private rs: ReviewsService, private router: Router, private fb: FormBuilder) {
+  constructor(private rs: ReviewsService, private router: Router, private fb: FormBuilder, private userService: UserService) {
     this.reviews;
-    this.showAddReviewForm = false;
    }
 
   ngOnInit() {
     this.addReviewForm = this.fb.group({
-      title:['' ,[Validators.required], Validators.maxLength(50)],
+      title:['' ,[Validators.required, Validators.maxLength(50)]],
       description:['' ,[Validators.required,Validators.maxLength(255)]]
     })
     this.showReviews();
+    this.userService.getEmail().subscribe(email => this.email = email);
   }
 
   showReviews(){
     this.rs.getReviewsByMovieId(this.movieId).subscribe(reviews => this.reviews = reviews);
   }
 
-  // addReview(){
-  //   this.router.navigate([`/review/add`]); 
-  // }
-
-  toggleAddReviewForm(){
-    this.showAddReviewForm ? this.showAddReviewForm = false : this.showAddReviewForm = true;
+  addReview() {
+    let review = new Review();
+    review.movieId = this.movieId;
+    review.title = this.addReviewForm.controls.title.value;
+    review.description = this.addReviewForm.controls.description.value;
+    review.email = this.email;
+    this.rs.addReview(review).subscribe();
   }
+
 }

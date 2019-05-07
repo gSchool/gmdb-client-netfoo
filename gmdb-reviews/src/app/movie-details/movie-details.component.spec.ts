@@ -5,8 +5,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {ActivatedRoute} from '@angular/router';
 import { Observable,of } from 'rxjs';
 import { Movies } from '../movies';
-import { ReviewService } from '../review.service';
 import { ReviewsService } from '../reviews.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ReviewComponent } from '../review/review.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 describe('MovieDetailsComponent', () => {
   let component: MovieDetailsComponent;
@@ -74,12 +76,13 @@ describe('MovieDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes([{ path: 'projects/:projectId', component: MovieDetailsComponent }])],
-      declarations: [ MovieDetailsComponent ],
+      imports: [RouterTestingModule.withRoutes([{ path: 'projects/:projectId', component: MovieDetailsComponent }]), HttpClientModule, ReactiveFormsModule, FormsModule],
+      declarations: [ MovieDetailsComponent, ReviewComponent ],
       providers:[
         {provide: ActivatedRoute, useValue: params},
         {provide: MoviesService,  useValue: new MockMovieService},
-        ReviewsService
+        ReviewsService,
+        HttpClient
         ]
     })
     .compileComponents();

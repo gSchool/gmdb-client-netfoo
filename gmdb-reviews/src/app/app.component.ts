@@ -30,14 +30,17 @@ export class AppComponent {
   onEnter() { 
     this.router.navigate([`/searchResult/${this.searchForm.controls.query.value}`])
   }
+
   verifyAuth(){
     let verification;
     this.userService.isAuthenticated().subscribe(a=>verification=a);
     return verification;
   }
+
   logOut(){
     this.userService.logout();
   }
+  
   getUserEmail(){
     let email;
     this.userService.getEmail().subscribe(a=>email=a);

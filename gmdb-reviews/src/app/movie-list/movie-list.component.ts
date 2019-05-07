@@ -22,8 +22,8 @@ export class MovieListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.ms.getAll().subscribe(movies => this.movieList = movies);
-    this.ms.getRandomMovies().subscribe(movies => this.movieList = movies);
+    this.ms.getAll().subscribe(movies => this.movieList = movies);
+    // this.ms.getRandomMovies().subscribe(movies => this.movieList = movies);
     this.update();
   }
 
