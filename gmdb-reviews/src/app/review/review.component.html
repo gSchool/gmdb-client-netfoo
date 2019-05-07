@@ -1,26 +1,5 @@
-<!-- <div class='reviews' *ngFor='let review of reviews'>
-  {{review?.title}} : {{review?.description}}
-</div>
-
-<button (click)="toggleAddReviewForm()">Add review</button>
-<div *ngIf = "showAddReviewForm">
-
-    <form class="addReview" [formGroup]="addReviewForm" (ngSubmit)="addReview()">
-        <label>Title</label>
-        <input type="text" formControlName="title" required />
-
-        <label>Description</label>
-        <textarea formControlName="description" required></textarea>
-        <br />
-        
-        <input class="btn btn-primary" type="submit" value="Add">
-    </form>
-
-</div> -->
-
-
-<form class="addReview" [formGroup]="addReviewForm" (ngSubmit)="addReview()">
-	<input placeholder="Title" class="title" formControlName="title" required />
+<form class="addReview" [formGroup]="addReviewForm">
+    <input placeholder="Title" class="title" formControlName="title" required />
     <textarea rows="10" cols="100" name="subject" placeholder="Please enter text of your review" class="message" formControlName="description" required></textarea>
     <input name="submit" class="btn" type="submit" value="ADD" />
 </form>

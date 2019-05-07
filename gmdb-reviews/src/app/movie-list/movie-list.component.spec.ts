@@ -64,6 +64,10 @@ describe('MovieListComponent', () => {
     getMovieByName(movieName:string){
       return of(this.stubValue)
     }
+
+    getRandomMovies(){
+      return of(this.stubValue);
+    }
   }
 
   beforeEach(async(() => {
