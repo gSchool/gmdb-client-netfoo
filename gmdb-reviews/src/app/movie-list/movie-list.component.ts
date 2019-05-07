@@ -22,9 +22,8 @@ export class MovieListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ms.getAll().subscribe(movies => this.movieList = movies);
-    // this.ms.getRandomMovies().subscribe(movies => this.movieList = movies);
     this.update();
+    // this.ms.getRandomMovies().subscribe(movies => this.movieList = movies.movies);
   }
 
   update(){
@@ -32,11 +31,11 @@ export class MovieListComponent implements OnInit {
       this.actRouter.params.subscribe(data => {
         try {
           this.query = data.query;
-          if(this.query===''){
-            this.ms.getAll().subscribe(movies => this.movieList = movies);
+          if(!this.query){
+            this.ms.getAll().subscribe(movies => this.movieList = movies.movies);
           }
           else{
-            this.ms.getMovieByName(this.query).subscribe(movies => this.movieList = movies);
+            this.ms.getMovieByName(this.query).subscribe(movies => this.movieList = movies.movies);
           }
         } catch (error) {
           //console.log(error);

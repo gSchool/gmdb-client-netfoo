@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Search as movieData } from '../data/movies.json';
+// import { Search as movieData } from '../data/movies.json';
 import { Observable,of } from 'rxjs';
 import { Movies } from './movies.js';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,44 +10,46 @@ import { Movies } from './movies.js';
 export class MoviesService {
   movieStorage:Movies[];
   
-  constructor() { 
-    //TODO: inject [private httpClient:HttpClient]
-  }
+  constructor(private http: HttpClient) { }
 
   getAll():Observable<Movies[]>{
-  this.movieStorage=movieData.map(data=>Object.assign(new Movies(),data));
+    return this.http.get<Movies[]>('http://localhost:8083/movies/api/search/%20');
 
-  if(!this.movieStorage[0]) return null; //no results found;
-  return of(this.movieStorage);
+  // this.movieStorage=movieData.map(data=>Object.assign(new Movies(),data));
+  // if(!this.movieStorage[0]) return null; //no results found;
+  // return of(this.movieStorage);
   }
 
   getMovieByName(movieName:string):Observable<Movies[]>{
-    if(!this.movieStorage) this.getAll();     //if movielist not loaded
+    return this.http.get<Movies[]>('http://localhost:8083/movies/api/search/'+movieName);
 
-    let result;
-    result=this.movieStorage.filter(movie=>{
-      let regex = new RegExp(`${movieName.toLowerCase()}`);
-      if(movie.Title.toLowerCase().match(regex)) return movie;
-    });
+    // if(!this.movieStorage) this.getAll();     //if movielist not loaded
+    // let result;
+    // result=this.movieStorage.filter(movie=>{
+    //   let regex = new RegExp(`${movieName.toLowerCase()}`);
+    //   if(movie.Title.toLowerCase().match(regex)) return movie;
+    // });
 
-    if(!result[0]) return null; //no results found;
-    return of(result); 
+    // if(!result[0]) return null; //no results found;
+    // return of(result); 
   }
 
   getMovieDetailById(imdbId:string):Observable<Movies>{
-    if(!this.movieStorage) this.getAll();    //if movielist not loaded
+    return this.http.get<Movies>('http://localhost:8083/movies/api/detail/' + imdbId);
 
-    let result;
-    result=this.movieStorage.reduce((target, cur)=>{
-      if(target) return target;
-      if(cur.imdbID===imdbId) return cur;
-    },null);
+    // if(!this.movieStorage) this.getAll();    //if movielist not loaded
+    // let result;
+    // result=this.movieStorage.reduce((target, cur)=>{
+    //   if(target) return target;
+    //   if(cur.imdbID===imdbId) return cur;
+    // },null);
 
-    return of(result); 
+    // return of(result); 
   }
 
   getRandomMovies(): Observable<Movies[]>{
-    this.getAll().subscribe(data => this.movieStorage = data);
+    this.getAll().subscribe(data => this.movieStorage = data.movies);
+    console.log('this.movieStorage '+this.movieStorage )
     let randomMoviesList = [];
     while (randomMoviesList.length != 100) {
       let randomIndex = Math.floor(Math.random() * (+this.movieStorage.length - +0) + +0);

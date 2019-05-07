@@ -20,7 +20,7 @@ export class AppComponent {
   constructor(private router: Router, private fb:FormBuilder, private ms: MoviesService, private userService:UserService) { }
 
   ngOnInit() {
-    this.ms.getAll().subscribe(movies => this.movieList = movies);
+    this.ms.getAll().subscribe(movies => this.movieList = movies.movies);
     
     this.searchForm = this.fb.group({
       query: ['', Validators.required]

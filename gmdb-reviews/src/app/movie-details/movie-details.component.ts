@@ -20,12 +20,16 @@ export class MovieDetailsComponent implements OnInit {
   showAddReviewForm:boolean = false;
   reviews: Review[];
 
-  constructor(private activateRouter: ActivatedRoute, private movieService: MoviesService,private location:Location, private rs: ReviewsService) { }
+  constructor(
+    private activateRouter: ActivatedRoute, 
+    private movieService: MoviesService,
+    private location:Location, 
+    private rs: ReviewsService) { }
 
   ngOnInit() {
     if(this.activateRouter.params){
       this.activateRouter.params.subscribe(({ id }) => this.id = id);
-      this.movieService.getMovieDetailById(this.id).subscribe(data => this.movie = data);
+      this.movieService.getMovieDetailById(this.id).subscribe(data => this.movie = data.movie);
     }
   }
 
@@ -35,10 +39,12 @@ export class MovieDetailsComponent implements OnInit {
 
   toggleShowReviews() {
     this.showReviews = !this.showReviews;
+    this.showAddReviewForm = false;
   }
 
   toggleAddReview() {
     this.showAddReviewForm = !this.showAddReviewForm;
+    this.showReviews = false;
   }
 
   getReviews(){

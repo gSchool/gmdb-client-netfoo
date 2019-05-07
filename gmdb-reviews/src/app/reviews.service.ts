@@ -15,7 +15,7 @@ export class ReviewsService {
   }
 
   addReview(review: Review) {
-    return this.http.post<Review>(`http://localhost:8084/api/v1/review`, review);
+    return this.http.post<Review>(`http://localhost:8084/api/v1/reviews`, review);
   }
 
 }
