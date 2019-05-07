@@ -1,10 +1,51 @@
-import { TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FavoritesListService } from './favorites-list.service';
+import { of } from 'rxjs';import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+
 
 let service;
 
+
+
 describe('FavoritesListService', () => {
+
+  class fakeHttpClient{
+    get(){
+      return of(
+        [
+          {
+            id: 6,
+            movieId: "tt0848228",
+            email: "user@hello",
+            description: "Very Good :)",
+            title: "Waste your time!"
+        },
+        {
+          id: 7,
+          movieId: "tt0848228",
+          email: "dfbdbfd@hello",
+          description: "Awesome",
+          title: "Just go!"
+        }
+      ]
+      )
+    }
+  }
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule, ReactiveFormsModule, FormsModule],
+      providers: [
+        {provide: HttpClient,  useValue: new fakeHttpClient}, 
+        FavoritesListService
+      ]
+    })
+    .compileComponents();
+  }));
+
   beforeEach(() =>{ 
     TestBed.configureTestingModule({});
     service = TestBed.get(FavoritesListService);
@@ -14,11 +55,29 @@ describe('FavoritesListService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  it('should create a new list for user with a provided name', () => {
+  xit('should create a new list for user with a provided name', () => {
+    let favoriteList=[];
+    service.createList("test").subscribe(a => favoriteList = a);
+    let expected = [
+      {
+        id: 6,
+        movieId: "tt0848228",
+        email: "user@hello",
+        description: "Very Good :)",
+        title: "Waste your time!"
+      },
+      {
+      id: 7,
+      movieId: "tt0848228",
+      email: "dfbdbfd@hello",
+      description: "Awesome",
+      title: "Just go!"
+      } 
+    ]
     
-    expect(service.createList("test")).toBeTruthy();
+    expect(service.createList("test")).toEqual(expected);
   });
-  it('should append movieID to a specific list', () => {
+  xit('should append movieID to a specific list', () => {
     service.createList("test")
      service.addMovie("test","tt0848228");
      let actual = service.getList("test");
