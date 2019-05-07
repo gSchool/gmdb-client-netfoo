@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'reviewsList',
+  selector: 'addReviewForm',
   templateUrl: './review.component.html',
   styleUrls: ['./review.component.css']
 })
@@ -32,25 +32,11 @@ export class ReviewComponent implements OnInit {
 
   showReviews(){
     this.rs.getReviewsByMovieId(this.movieId).subscribe(reviews => this.reviews = reviews);
-    // this.reviews.push({
-    //   id:"1",
-    //   userId:"1",
-    //   movieId:"tt0848228",
-    //   title:"Good movie",
-    //   description:"terrible movie"
-    // });
-    // this.reviews.push({
-    //   id:"2",
-    //   userId:"1",
-    //   movieId:"tt2395427",
-    //   title:"terrible movie",
-    //   description:"Good movie"
-    // });
   }
 
-  addReview(){
-    this.router.navigate([`/review/add`]); 
-  }
+  // addReview(){
+  //   this.router.navigate([`/review/add`]); 
+  // }
 
   toggleAddReviewForm(){
     this.showAddReviewForm ? this.showAddReviewForm = false : this.showAddReviewForm = true;
