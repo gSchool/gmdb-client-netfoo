@@ -16,6 +16,7 @@ export class ReviewComponent implements OnInit {
   movieId: string;
   addReviewForm: FormGroup;
   email: string;
+  success :boolean;
   
   constructor(private rs: ReviewsService, private router: Router, private fb: FormBuilder, private userService: UserService) {
     this.reviews;
@@ -28,6 +29,7 @@ export class ReviewComponent implements OnInit {
     })
     this.showReviews();
     this.userService.getEmail().subscribe(email => this.email = email);
+    this.success = false;
   }
 
   showReviews(){
@@ -41,6 +43,6 @@ export class ReviewComponent implements OnInit {
     review.description = this.addReviewForm.controls.description.value;
     review.email = this.email;
     this.rs.addReview(review).subscribe();
+    this.success = true;
   }
-
 }

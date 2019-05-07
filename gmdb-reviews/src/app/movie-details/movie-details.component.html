@@ -1,32 +1,33 @@
 <div class="content">
   <div class="row" >
 
-    <div class="col-sm-6" [ngStyle]="{'background': 'url(' + movie?.Poster + ') no-repeat 0 0', 'background-size': '100% 100%'}">
+    <div class="col-sm-6" [ngStyle]="{'background': 'url(' + movie?.poster + ') center no-repeat', 'background-size': '100% 100%'}">
     </div>
 
     <div class="col-sm-6">
       <div class="movieInfo">
 
-        <h2>{{movie?.Title}}</h2>
-        <p>{{movie?.Plot}}</p>
+        <h2>{{movie?.title}}</h2>
+        <p>{{movie?.plot}}</p>
         
         <p *ngIf="movie?.Released !== 'N/A'"><strong>Released:</strong>{{movie?.Released}}</p>
-        <p><strong>Genre: </strong>{{movie?.Genre}}</p>
-        <p *ngIf="movie?.Rated !== 'N/A'"><strong>Rated: </strong>{{movie?.Rated}}</p>
-        <p><strong>Actors: </strong>{{movie?.Actors}}</p>
-        <p *ngIf="movie?.Director !== 'N/A'"><strong>Director: </strong>{{movie?.Director}}</p>
-        <p *ngIf="movie?.Production !== undefined"><strong>Production: </strong>{{movie?.Production}}</p>
-        <p><strong>Country: </strong>{{movie?.Country}}</p>
-        <p><strong>Runtime: </strong>{{movie?.Runtime}}</p>
-        <p><strong>Language: </strong>{{movie?.Language}}</p>
-        <p *ngIf="movie?.Awards !== 'N/A'"><strong>Awards: </strong>{{movie?.Awards}}</p>
-        <p *ngIf="movie?.BoxOffice"><strong>Box Office: </strong>{{movie?.BoxOffice}}</p>
+        <p><strong>Genre: </strong>{{movie?.genre}}</p>
+        <p *ngIf="movie?.rated !== 'N/A'"><strong>Rated: </strong>{{movie?.rated}}</p>
+        <p><strong>Actors: </strong>{{movie?.actors}}</p>
+        <p *ngIf="movie?.director !== 'N/A'"><strong>Director: </strong>{{movie?.director}}</p>
+        <p *ngIf="movie?.writer !== 'N/A'"><strong>Writers: </strong>{{movie?.writer}}</p>
+        <!-- <p *ngIf="movie?.production !== undefined"><strong>Production: </strong>{{movie?.production}}</p> -->
+        <p><strong>Country: </strong>{{movie?.country}}</p>
+        <p><strong>Runtime: </strong>{{movie?.runtime}}</p>
+        <p><strong>Language: </strong>{{movie?.language}}</p>
+        <p *ngIf="movie?.awards !== 'N/A'"><strong>Awards: </strong>{{movie?.awards}}</p>
+        <!-- <p *ngIf="movie?.boxOffice"><strong>Box Office: </strong>{{movie?.boxOffice}}</p> -->
 
-        <h5 id="ratings">Ratings</h5>
+        <!-- <h5 id="ratings">Ratings</h5>
         <p><strong>IMDb Rating: </strong>{{movie?.imdbRating}}</p>
         <p *ngIf="movie?.Ratings[0]?.Source"><strong>{{movie?.Ratings[0]?.Source}}: </strong>{{movie?.Ratings[0]?.Value}}</p>
         <p *ngIf="movie?.Ratings[1]?.Source"><strong>{{movie?.Ratings[1]?.Source}}: </strong>{{movie?.Ratings[1]?.Value}}</p>
-        <p *ngIf="movie?.Ratings[2]?.Source"><strong>{{movie?.Ratings[2]?.Source}}: </strong>{{movie?.Ratings[2]?.Value}}</p>
+        <p *ngIf="movie?.Ratings[2]?.Source"><strong>{{movie?.Ratings[2]?.Source}}: </strong>{{movie?.Ratings[2]?.Value}}</p> -->
 
       </div>
     </div>
