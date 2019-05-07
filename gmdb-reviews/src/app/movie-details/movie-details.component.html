@@ -45,9 +45,8 @@
     <div class="col-8 showReviews">
         <ng-container *ngIf="showReviews">
             <div *ngFor="let review of reviews">
-              <label>{{review?.userId}}</label>
-              <label>{{review?.title}}</label>
-              <label>{{review?.description}}</label>
+              <h5><strong>{{review?.email}}</strong>{{review?.title}}</h5>
+              <p>{{review?.description}}</p>
             </div>
         </ng-container>
     </div>
