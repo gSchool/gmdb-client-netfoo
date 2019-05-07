@@ -45,8 +45,9 @@ export class UserService {
     this.authenticated = false;
     this.userEmail="";
   }
+
   getEmail():Observable<string>{
-  return of(this.userEmail);
+    return of(this.userEmail);
   }
 
 }

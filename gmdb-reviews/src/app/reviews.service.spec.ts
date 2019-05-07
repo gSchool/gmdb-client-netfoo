@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserService } from './user.service';
 
 describe('ReviewsService', () => {
   let service: ReviewsService;

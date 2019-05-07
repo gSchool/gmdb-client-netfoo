@@ -7,11 +7,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { ReviewsService } from '../reviews.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { UserService } from '../user.service';
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
   let fixture: ComponentFixture<ReviewComponent>;
   let service: ReviewsService;
+  let us: UserService;
 
   class MockReviewService {
     stubValue: Review[];
@@ -29,11 +31,23 @@ describe('ReviewComponent', () => {
     }
   }
 
+  class MockUserService{
+    stubValue = "hello@hello";
+    
+    getEmail(){
+      return of(this.stubValue);
+    }
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, ReactiveFormsModule, HttpClientModule],
       declarations: [ ReviewComponent ],
-      providers: [{provide: ReviewsService, useValue: new MockReviewService}, FormBuilder, HttpClient]
+      providers: [
+        {provide: ReviewsService, useValue: new MockReviewService}, 
+        FormBuilder, HttpClient, 
+        {provide: UserService, useValue: new MockUserService}
+      ]
     })
     .compileComponents();
   }));
@@ -62,6 +76,12 @@ describe('ReviewComponent', () => {
     component.showReviews();
     expect(component.reviews).toEqual(expectedReviews);
   });
+
+  it('should have the user email ready before adding reviews', () => {
+    let expectedEmail = 'hello@hello';
+
+    expect(component.email).toEqual(expectedEmail);
+  })
 
   // it('should be able to view review after adding review', () => {
   //   let expectedLength = 1;

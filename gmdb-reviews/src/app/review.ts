@@ -1,6 +1,6 @@
 export class Review {
     id: string;
-    userId: string;
+    email: string;
     movieId: string;
     title: string;
     description: string;

@@ -14,4 +14,8 @@ export class ReviewsService {
     return this.http.get<Review[]>(`http://localhost:8084/api/review?movieId=${imdbId}`);
   }
 
+  addReview(review: Review) {
+    return this.http.post<Review>(`http://localhost:8084/api/review`, review);
+  }
+
 }

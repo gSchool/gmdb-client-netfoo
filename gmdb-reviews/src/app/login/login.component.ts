@@ -13,10 +13,10 @@ import {Location} from '@angular/common';
 export class LoginComponent implements OnInit {
   email: String = '';
   feedback: String = "";
-
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private location: Location, private activeRoute: ActivatedRoute, private userService: UserService) {
-  }
+
+  constructor(private fb: FormBuilder, private location: Location, private activeRoute: ActivatedRoute, private userService: UserService) {}
+  
   authenticate() {
     if (this.loginForm.valid) {
       let email = this.loginForm.value.email;

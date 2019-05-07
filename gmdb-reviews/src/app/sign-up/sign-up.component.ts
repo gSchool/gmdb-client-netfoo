@@ -11,7 +11,6 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-
   formSignup: FormGroup;
   feedback: string = "";
   
