@@ -16,7 +16,8 @@ import { ReviewsService } from '../reviews.service';
 export class MovieDetailsComponent implements OnInit {
   movie: Movies;
   id: string; //imdb id
-  show:boolean = false;
+  showReviews:boolean = false;
+  showAddReviewForm:boolean = false;
   reviews: Review[];
 
   constructor(private activateRouter: ActivatedRoute, private movieService: MoviesService,private location:Location, private rs: ReviewsService) { }
@@ -32,8 +33,12 @@ export class MovieDetailsComponent implements OnInit {
     this.location.back();
   }
 
-  toggle() {
-    this.show = !this.show;
+  toggleShowReviews() {
+    this.showReviews = !this.showReviews;
+  }
+
+  toggleAddReview() {
+    this.showAddReviewForm = !this.showAddReviewForm;
   }
 
   getReviews(){
