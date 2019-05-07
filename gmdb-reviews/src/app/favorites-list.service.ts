@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable,of } from 'rxjs';
 
 
 @Injectable({
@@ -23,7 +23,7 @@ listNameStorage : string[];
   
 
   getAllLists(user: string) {
-    this.http.get(`http://localhost:8082/movie-list/getUsersLists?username=${user}`)
+  return  of(this.http.get(`http://localhost:8082/movie-list/getUsersLists?username=${user}`)
     .subscribe(
       res =>  {
         this.success=true;
@@ -41,7 +41,7 @@ listNameStorage : string[];
         if(this.success) return this.movieListStorage.entries();
         else return null;
       }
-    );
+    ));
   }
 
   createList(listName: string) {
@@ -56,7 +56,7 @@ listNameStorage : string[];
       headers: { "content-type": "application/json" }
     }
 
-   return this.http.post("http://localhost:8082/movie-list/createMovieList", newList, options)
+   return of(this.http.post("http://localhost:8082/movie-list/createMovieList", newList, options)
       .subscribe(
         res =>  {
           this.success=true;
@@ -68,23 +68,9 @@ listNameStorage : string[];
            this.success=false;
         },
         () => this.success
-      );
+      ));
   }
 
-
-  // private handleError<T> (operation = 'operation', result?: T) {
-  //   return (error: any): Observable<T> => {
-
-  //     // TODO: send the error to remote logging infrastructure
-  //     console.error(error); // log to console instead
-
-  //     // TODO: better job of transforming error for user consumption
-  //     this.log(`${operation} failed: ${error.message}`);
-
-  //     // Let the app keep running by returning an empty result.
-  //     return of(result as T);
-  //   };
-  // }
 
   addMovietoList(listName: string, movieId: string) {
     //get listId
@@ -95,7 +81,7 @@ listNameStorage : string[];
     this.movieListStorage.set(listId, list);
 
     //API call
-  return  this.http.put(`http://localhost:8082/movie-list/putMovie?movieListId=${listId}&movieId=${movieId}`,{headers:{"content-type":"application/json"}})
+  return  of(this.http.put(`http://localhost:8082/movie-list/putMovie?movieListId=${listId}&movieId=${movieId}`,{headers:{"content-type":"application/json"}})
     .subscribe(
       res =>  this.success=true,
       err =>{
@@ -103,7 +89,7 @@ listNameStorage : string[];
          this.success=false;
       },
       () => this.success
-    );
+    ));
       
   }
   removeMovieFromList(listName: string, movieId: string){
@@ -115,7 +101,7 @@ listNameStorage : string[];
     this.movieListStorage.set(listId, list);
 
     //API call
-  return  this.http.delete(`http://localhost:8082/movie-list/deleteMovie?movieListId=${listId}&movieId=${movieId}`,{headers:{"content-type":"application/json"}})
+  return  of(this.http.delete(`http://localhost:8082/movie-list/deleteMovie?movieListId=${listId}&movieId=${movieId}`,{headers:{"content-type":"application/json"}})
   .subscribe(
     res =>  this.success=true,
     err =>{
@@ -123,7 +109,7 @@ listNameStorage : string[];
        this.success=false;
     },
     () => this.success
-  );
+  ));
     
   }
 removeList(listName:string){
@@ -135,7 +121,7 @@ removeList(listName:string){
 
 
     //API call
-  return  this.http.delete(`http://localhost:8082/movie-list/deleteMovieList?movieListId=${listId}`,{headers:{"content-type":"application/json"}})
+  return  of(this.http.delete(`http://localhost:8082/movie-list/deleteMovieList?movieListId=${listId}`,{headers:{"content-type":"application/json"}})
   .subscribe(
     res =>  this.success=true,
     err =>{
@@ -143,7 +129,7 @@ removeList(listName:string){
        this.success=false;
     },
     () => this.success
-  );
+  ));
 }
 
 }
