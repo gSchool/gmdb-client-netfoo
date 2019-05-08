@@ -23,3 +23,8 @@ a {
 label{
 	padding: 5px;
 }
+
+.feedback{
+	color: white;
+	font-weight: 14pt
+}

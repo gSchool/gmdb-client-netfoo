@@ -18,20 +18,18 @@ describe('FavoritesListService', () => {
       return of(
         [
           {
-            id: 6,
-            movieId: "tt0848228",
-            email: "user@hello",
-            description: "Very Good :)",
-            title: "Waste your time!"
-        },
-        {
-          id: 7,
-          movieId: "tt0848228",
-          email: "dfbdbfd@hello",
-          description: "Awesome",
-          title: "Just go!"
-        }
-      ]
+            movieListId: 1,
+            name: "test",
+            username: "test@test.com",
+            movieList: ["movieId#1","movieId#2"]
+          },
+          {
+            movieListId: 2,
+            name: "test2",
+            username: "test@test.com",
+            movieList: []
+          } 
+        ]    
       )
     }
   }
@@ -55,28 +53,20 @@ describe('FavoritesListService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  xit('should create a new list for user with a provided name', () => {
-    let favoriteList=[];
-    service.createList("test").subscribe(a => favoriteList = a);
-    let expected = [
-      {
-        id: 6,
-        movieId: "tt0848228",
-        email: "user@hello",
-        description: "Very Good :)",
-        title: "Waste your time!"
-      },
-      {
-      id: 7,
-      movieId: "tt0848228",
-      email: "dfbdbfd@hello",
-      description: "Awesome",
-      title: "Just go!"
-      } 
-    ]
+
+  it('should retrievve lost of user favorites', () => {
+    let actual={};
+    service.getAllLists("test").subscribe(a => actual = a);
     
-    expect(service.createList("test")).toEqual(expected);
+    let expected = 
+    {
+      "test": ["movieId#1","movieId#2"],
+      "test2": []
+    };
+
+    expect(actual).toEqual(expected);
   });
+
   xit('should append movieID to a specific list', () => {
     service.createList("test")
      service.addMovie("test","tt0848228");

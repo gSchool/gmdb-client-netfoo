@@ -1,0 +1,11 @@
+#createList{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#favorite-list{
+    margin:auto;
+	color: white;
+    font-weight: 14pt;
+    text-align: right;
+}

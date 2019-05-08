@@ -36,8 +36,8 @@
       <div class="btn-group-lg btn-group col align-self-center" role="group" aria-label="group of buttons">
         <button (click)="toggleShowReviews()" (click)="getReviews()" id="bt" type="button" class="btn btn-outline-secondary">Reviews</button>
         <button type="button" (click)="toggleAddReview()" class="btn btn-outline-warning" id="addReview">Add Review</button>
-        <button type="button" class="btn btn-outline-success" id="addToFavorites">Add to List</button>
-        <button type="button" class="btn btn-outline-info" id="backToSearch" (click)="goBack()">Back to Search</button>
+        <button type="button" (click)="toggleShowFavoriteList()" class="btn btn-outline-success" id="addToFavorites">Add to List</button>
+        <button type="button" (click)="goBack()" class="btn btn-outline-info" id="backToSearch" >Back to Search</button>
       </div>
     </div>
     <div class="col"></div>
@@ -56,6 +56,11 @@
             </div>
         </ng-container>
     </div>
+    <div class="col-8 show-favorite-lists">
+      <ng-container *ngIf="showFavoriteLists">
+        <favorite-lists [movieId]="id"></favorite-lists>
+      </ng-container>
+  </div>
 
   </div>
 </div>

@@ -9,6 +9,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { ReviewComponent } from './review/review.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
+import { FavoriteListsComponent } from './favorite-lists/favorite-lists.component';
 
 
 
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     ReviewComponent,
     SignUpComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    FavoriteListsComponent
   ],
   imports: [
     BrowserModule,

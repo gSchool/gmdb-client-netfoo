@@ -1,0 +1,18 @@
+<div id="favorite-list">
+  <span *ngIf="favoriteListNames.length===0 || !favoriteListNames">Please login to see favoriteLists</span>
+  <span class="feedback">{{this.feedback}}</span>
+  <div class="authentication" *ngIf="favoriteListNames.length>0 || favoriteListNames ">
+   <div *ngFor="let listName of favoriteListNames">
+     <a  (click)="addMovieToList()">{{listName}}</a>
+    <br/>
+   </div>
+    <a (click)="this.isCreateListClicked=true">Create new movie list</a>
+
+    <div id="create-list" *ngIf="this.isCreateListClicked">
+      <input type="text" [(ngModel)]="this.newListName" placeholder="Enter List name" />
+      <button class="submit" (click)="createList()">Create list</button>
+      <button class="submit" (click)="this.isCreateListClicked=false">Cancel</button>
+      
+    </div>
+  </div>
+</div>

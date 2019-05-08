@@ -18,6 +18,7 @@ export class MovieDetailsComponent implements OnInit {
   id: string; //imdb id
   showReviews:boolean = false;
   showAddReviewForm:boolean = false;
+  showFavoriteLists:boolean = false;
   reviews: Review[];
 
   constructor(private activateRouter: ActivatedRoute, private movieService: MoviesService,private location:Location, private rs: ReviewsService) { }
@@ -35,10 +36,17 @@ export class MovieDetailsComponent implements OnInit {
 
   toggleShowReviews() {
     this.showReviews = !this.showReviews;
+    this.showFavoriteLists = false;
   }
 
   toggleAddReview() {
     this.showAddReviewForm = !this.showAddReviewForm;
+    this.showFavoriteLists = false;
+  }
+  toggleShowFavoriteList(){
+    this.showFavoriteLists=!this.showFavoriteLists;
+    this.showAddReviewForm = false;
+    this.showReviews = false;
   }
 
   getReviews(){
