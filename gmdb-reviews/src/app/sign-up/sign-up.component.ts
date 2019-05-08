@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location} from '@angular/common';
 import { UserService } from '../user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,10 +13,15 @@ export class SignUpComponent implements OnInit {
   formSignup: FormGroup;
   feedback: string = "";
   
-  constructor(private fb: FormBuilder, private lation:Location, private userService:UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, 
+    private lation:Location, 
+    private userService:UserService, 
+    private router: Router) { }
 
   ngOnInit() {
     this.formSignup = this.fb.group({
+      name:['' ,[Validators.required]],
+      userName:['' ,[Validators.required]],
       email:['' ,[Validators.required,Validators.email]],
       password:['' ,[Validators.required,Validators.minLength(6)]],
       confirmPassword:['' ,[Validators.required,Validators.minLength(6)]]
@@ -26,13 +30,21 @@ export class SignUpComponent implements OnInit {
 
   signup(){
     if(this.formSignup.valid){
-      let {email,password,confirmPassword} = this.formSignup.value;
+      let {name, userName, email, password, confirmPassword} = this.formSignup.value;
 
       let success;
       if( password!==confirmPassword){return;} 
+
+      this.userService.userEmail = email;
+      this.userService.authenticated = true;
       
-      this.userService.signUp(email,password).subscribe(a=>success=a); 
-      success ?  this.router.navigate(['/']) : this.feedback = "Email already in the system!"; 
+      this.userService.signUp(name, userName, email,password).subscribe(a=>{
+        success=a;
+        console.log(success);
+        // success ? this.router.navigate(['/']) : this.feedback = "Email already in the system!"; 
+      });
+
+      this.router.navigate(['/']);
     }
   }
 }

@@ -1,8 +1,8 @@
 form {
-    margin: 1% 0 0 10%;
+    margin: 1% 0 0 1%;
     width: 80%;
     height: auto;
-    padding:30px;
+    /* padding-left:30px; */
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 5px;
     box-shadow: 0 0 13px 3px rgba(0,0,0,.5);
