@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 import {Location} from '@angular/common';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,14 +26,10 @@ export class LoginComponent implements OnInit {
       let userName = this.loginForm.value.userName;
       let password = this.loginForm.value.password;
       let verification = false;
-      // this.userService.login(email, password).subscribe(a => verification = a);
       this.userService.login(userName, password).subscribe(a => {
         if(a.email){
-          // console.log(' user email '+a.email)
           this.userService.setEmail(a.email);
           this.userService.authenticated = true;
-          // console.log(' user email '+this.userService.userEmail);
-          // console.log(' auth '+this.userService.authenticated);
           this.router.navigate(['/']);
           verification = true;
         }
@@ -52,7 +47,6 @@ export class LoginComponent implements OnInit {
       if (!email) return;
       else {
         this.email = email;
-        console.log("thank you for signing up", email);
       }
       location.reload();
     });

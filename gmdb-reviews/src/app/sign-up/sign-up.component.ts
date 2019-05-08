@@ -31,20 +31,14 @@ export class SignUpComponent implements OnInit {
   signup(){
     if(this.formSignup.valid){
       let {name, userName, email, password, confirmPassword} = this.formSignup.value;
-
-      let success;
-      if( password!==confirmPassword){return;} 
+      if (password !== confirmPassword){return;} 
 
       this.userService.userEmail = email;
       this.userService.authenticated = true;
       
-      this.userService.signUp(name, userName, email,password).subscribe(a=>{
-        success=a;
-        console.log(success);
-        // success ? this.router.navigate(['/']) : this.feedback = "Email already in the system!"; 
-      });
-
-      this.router.navigate(['/']);
+      this.userService.signUp(name, userName, email,password).subscribe(); 
     }
+    this.router.navigate(['/']);
   }
+  
 }

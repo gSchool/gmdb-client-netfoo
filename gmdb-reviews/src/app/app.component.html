@@ -5,7 +5,6 @@
     <form [formGroup]='searchForm' class="form-inline"  >
       <input formControlName="query" #box (keyup.enter)="onEnter(searchForm.controls.query.value)" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
-
     
     <div class="userAccess" *ngIf="!verifyAuth()">
       <a routerLink="/login"> Login </a>
@@ -13,7 +12,7 @@
     </div>
     
     <div class="userAccess" *ngIf="verifyAuth()">
-      <a>My Movie Lists</a>
+      <a id="userMovieList">My Movie Lists</a>
       <a>{{getUserEmail()}}</a>
       <a (click)="logOut()"> Logout </a>
     </div>

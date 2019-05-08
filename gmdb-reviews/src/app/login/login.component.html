@@ -7,7 +7,6 @@
         <div class='welcome'>Welcome back :)</div>
 
         <div class='input-fields'>
-          <!-- <input type='text' placeholder='Username' class='input-line full-width'></input> -->
           <input formControlName="userName" required type='text' placeholder='User Name' class='input-line full-width' />
           <label  *ngIf="loginForm.controls.userName.invalid && loginForm.controls.userName.dirty" 
           class="alert alert-danger">User Name is invalid</label>

@@ -18,7 +18,6 @@
   transform: scale(1.1);
 }
 
-
 .userAccess {
   margin-right: 3%;
 }
@@ -44,3 +43,6 @@ input[type=search]:focus {
     outline: none;
 }
 
+#userMovieList {
+  color: yellow !important; 
+}

@@ -51,4 +51,5 @@ export class AppComponent {
     this.userService.getEmail().subscribe(a=>email=a);
     return email;
   }
+  
 }
