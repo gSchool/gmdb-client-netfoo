@@ -10,8 +10,6 @@ import { ReviewComponent } from './review/review.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

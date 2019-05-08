@@ -7,10 +7,9 @@
         <div class='welcome'>Welcome back :)</div>
 
         <div class='input-fields'>
-          <!-- <input type='text' placeholder='Username' class='input-line full-width'></input> -->
-          <input formControlName="email" required type='email' placeholder='Email' class='input-line full-width' />
-          <label  *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.dirty" 
-          class="alert alert-danger">email is invalid</label>
+          <input formControlName="userName" required type='text' placeholder='User Name' class='input-line full-width' />
+          <label  *ngIf="loginForm.controls.userName.invalid && loginForm.controls.userName.dirty" 
+          class="alert alert-danger">User Name is invalid</label>
 
           <input formControlName="password" required type='password' placeholder='Password' class='input-line full-width' />
           <label *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty" 
@@ -18,6 +17,7 @@
         </div>
 
         <button type="submit" value="Login" class='ghost-round full-width'>Login</button>
+        <label *ngIf="feedback !== ''" class="alert alert-danger">{{feedback}}</label>
         
       </div>
     </div>

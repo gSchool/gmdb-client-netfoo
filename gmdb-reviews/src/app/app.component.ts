@@ -16,12 +16,17 @@ export class AppComponent {
   title = 'Movies';
   movieList: Movies[];
   searchForm: FormGroup;
+  randomMoviesList: Movies[];
 
-  constructor(private router: Router, private fb:FormBuilder, private ms: MoviesService, private userService:UserService) { }
+  constructor(
+    private router: Router, 
+    private fb:FormBuilder, 
+    private ms: MoviesService, 
+    private userService:UserService) { }
 
   ngOnInit() {
     this.ms.getAll().subscribe(movies => this.movieList = movies.movies);
-    
+
     this.searchForm = this.fb.group({
       query: ['', Validators.required]
     });
@@ -46,4 +51,5 @@ export class AppComponent {
     this.userService.getEmail().subscribe(a=>email=a);
     return email;
   }
+  
 }

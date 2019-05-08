@@ -76,7 +76,8 @@ describe('MovieDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes([{ path: 'projects/:projectId', component: MovieDetailsComponent }]), HttpClientModule, ReactiveFormsModule, FormsModule],
+      imports: [RouterTestingModule.withRoutes([{ path: 'projects/:projectId', component: MovieDetailsComponent }]), 
+      HttpClientModule, ReactiveFormsModule, FormsModule],
       declarations: [ MovieDetailsComponent, ReviewComponent ],
       providers:[
         {provide: ActivatedRoute, useValue: params},

@@ -12,9 +12,11 @@ export class MovieListComponent implements OnInit {
   movieList: Movies[];
   query = '';
   wasClicked = false;
+  randomMoviesList: Movies[];
 
   constructor(private ms: MoviesService, private actRouter: ActivatedRoute) { 
     this.movieList = [];
+    this.randomMoviesList = [];
   }
 
   onClick() {
@@ -23,7 +25,6 @@ export class MovieListComponent implements OnInit {
 
   ngOnInit() {
     this.update();
-    // this.ms.getRandomMovies().subscribe(movies => this.movieList = movies.movies);
   }
 
   update(){
@@ -32,15 +33,23 @@ export class MovieListComponent implements OnInit {
         try {
           this.query = data.query;
           if(!this.query){
-            this.ms.getAll().subscribe(movies => this.movieList = movies.movies);
+            this.ms.getAll().subscribe(movies => {
+              this.movieList = movies.movies;
+              while (this.randomMoviesList.length != 95) {
+                let randomIndex = Math.floor(Math.random() * (+this.movieList.length - +0) + +0);
+                if (!this.randomMoviesList.includes(this.movieList[randomIndex])) {
+                  this.randomMoviesList.push(this.movieList[randomIndex]);
+                }
+              }
+              this.movieList = this.randomMoviesList;
+            });
           }
           else{
             this.ms.getMovieByName(this.query).subscribe(movies => this.movieList = movies.movies);
           }
-        } catch (error) {
-          //console.log(error);
-        }
+        } catch (error) {}
       });
     }
   }
+
 }

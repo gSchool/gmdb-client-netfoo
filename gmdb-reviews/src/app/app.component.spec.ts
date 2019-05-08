@@ -2,6 +2,7 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -12,12 +13,13 @@ describe('AppComponent', () => {
       imports: [
         RouterTestingModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
       ],
-
       declarations: [
         AppComponent,
       ],
+      providers: [HttpClient]
     }).compileComponents();
   }));
 

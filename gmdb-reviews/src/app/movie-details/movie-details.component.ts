@@ -33,9 +33,7 @@ export class MovieDetailsComponent implements OnInit {
     }
   }
 
-  goBack(){
-    this.location.back();
-  }
+  goBack() { this.location.back(); }
 
   toggleShowReviews() {
     this.showReviews = !this.showReviews;
@@ -47,7 +45,7 @@ export class MovieDetailsComponent implements OnInit {
     this.showReviews = false;
   }
 
-  getReviews(){
+  getReviews() {
     this.rs.getReviewsByMovieId(this.id).subscribe(reviews => this.reviews = reviews);
   }
 }
